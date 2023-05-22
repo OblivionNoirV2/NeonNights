@@ -1,3 +1,18 @@
 .neon-text {
     color: rgb(255, 16, 240);
 }
+
+@keyframes ad-scroll {
+    0% {
+        transform: translateX(100%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.animate-ad {
+    display: inline-block;
+    animation: ad-scroll 40s linear infinite;
+}
