@@ -6,6 +6,8 @@ import { Link, Routes, Route } from 'react-router-dom';
 import Checkout from './Checkout';
 import Home from './Home';
 import Explore from './Sorting';
+//Want big night, synthy, future club vibes. Dark
+
 //do a cool gradient thing 
 //clicking on logo will act as home button
 const Navbar = () => {
@@ -13,17 +15,17 @@ const Navbar = () => {
     <nav className='main-nav'>
       <ul>
         <li>
-          <Link to='/Home'>
-            logo goes here
+          <Link to='/'>
+            logo goes here, make it rotate to look 3d
           </Link>
         </li>
         <li>
-          <Link to='/Home'>
+          <Link to='/'>
             Home
           </Link>
         </li>
         <li>
-          <Link to='/SortItems'>
+          <Link to='/Explore'>
             Explore
           </Link>
         </li>
@@ -40,17 +42,15 @@ const Navbar = () => {
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path='/Checkout' element={<Checkout />} />
-        <Route path='/Home' element={<Home />} />
-        <Route path='/Explore' element={<Explore />} />
+        <Route path='/SortItems' element={<Explore />} />
+        <Route path='/' element={<Home />} />
       </Routes>
-      <main>
-        <Navbar />
-        <Home />
-      </main>
     </>
   );
 }
+
 
 export default App;
