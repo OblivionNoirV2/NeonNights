@@ -14,11 +14,12 @@
 
 .animate-ad {
     display: inline-block;
-    animation: ad-scroll 40s linear infinite;
+    animation: ad-scroll 60s linear infinite;
 }
 
 body {
     background-color: #000000;
+    font-family: 'Orbitron', sans-serif;
 
 }
 
