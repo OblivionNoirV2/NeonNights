@@ -1,8 +1,9 @@
+import './Sparkles.css'
 const Home = () => {
     return (
-        <div>
+        <main className='neon-text'>
             <h1>main content</h1>
-        </div>
+        </main>
     )
 }
 

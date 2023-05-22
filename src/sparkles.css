@@ -16,3 +16,14 @@
     display: inline-block;
     animation: ad-scroll 40s linear infinite;
 }
+
+body {
+    background-color: #000000;
+
+}
+
+hr {
+    border: none;
+    background-color: rgb(31, 81, 255);
+    height: .094rem;
+}
