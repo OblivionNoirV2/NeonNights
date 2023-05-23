@@ -5,13 +5,15 @@ import { useState, useEffect } from 'react';
 const ImagesArray: string[] = [
     require('./assets/ai.png'),
     require('./assets/armor.png'),
-    require('./assets/chip.png'),
+    require('./assets/katana.png'),
+
     require('./assets/cpu.png'),
     require('./assets/gpu.png'),
     require('./assets/glasses.png'),
-    require('./assets/katana.png'),
-    require('./assets/launcher.png'),
     require('./assets/pill.png'),
+    require('./assets/chip.png'),
+    require('./assets/launcher.png'),
+
 ]
 const Home = () => {
     return (
@@ -29,7 +31,8 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images }) => {
 
         <div className="image-grid ">
             {images.map((img, i) => (
-                <img className="w-1/2 h-auto grid-image" src={img} alt={img} key={i} />
+                <img className="w-1/2 h-auto grid-image"
+                    src={img} alt={img} key={i} />
             ))}
         </div>
     );

@@ -43,4 +43,11 @@ html {
 .grid-image {
     width: 100%;
     height: auto;
+    box-shadow: 0 0 1rem rgb(255, 16, 240);
+}
+
+.grid-image-white {
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 1rem rgb(31, 81, 255);
 }
