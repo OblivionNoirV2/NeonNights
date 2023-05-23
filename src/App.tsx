@@ -60,6 +60,18 @@ const ReallyCoolScrollingText = () => {
     </div>
   );
 };
+/*there will be a number positioned over this, 
+showing how many items are in the cart*/
+const CartIcon = () => {
+  return (
+    <div className='w-24 h-24 mr-4'>
+      <Link to='/Checkout'>
+        <img src={require("./assets/cart.png")} alt="cart"
+          className="h-full w-auto flex" />
+      </Link>
+    </div>
+  )
+}
 const Navbar = () => {
   return (
     <>
@@ -72,17 +84,13 @@ const Navbar = () => {
               Home
             </Link>
           </li>
-          <li className='mr-8'>
+          <li className='-mr-6'>
             <Link to='/Explore'>
               Explore
             </Link>
           </li>
-          <li className='mr-8'>
-            <Link to='/Checkout'>
-              Cart
-            </Link>
-          </li>
         </ul>
+        <CartIcon />
       </nav>
       <hr></hr>
     </>
