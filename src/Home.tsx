@@ -30,8 +30,12 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images }) => {
     return (
         <div className="image-grid">
             {images.map((img, i) => (
+                //every other image gets blue shadow, the others are pink
                 <img
-                    className={i % 2 === 0 ? "w-1/2 h-auto grid-image" : "w-1/2 h-auto grid-image-blue"}
+                    className={
+                        i % 2 === 0 ? "w-1/2 h-auto grid-image"
+                            : "w-1/2 h-auto grid-image-blue"
+                    }
                     src={img}
                     alt={img}
                     key={i}
