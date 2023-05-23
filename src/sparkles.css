@@ -28,3 +28,19 @@ hr {
     background-color: rgb(31, 81, 255);
     height: .094rem;
 }
+
+html {
+    overflow-y: auto;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20rem;
+    margin: 8rem 2rem 8rem 2rem;
+}
+
+.grid-image {
+    width: 100%;
+    height: auto;
+}
