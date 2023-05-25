@@ -125,6 +125,10 @@ function getImageCaption(img: string, length: string) {
     }
 
 }
+
+function getPrice(img: string) {
+    return product_info[img].price;
+}
 const ImagesGrid: React.FC<ImagesGridProps> = ({ images }) => {
     return (
         <div className="image-grid">
@@ -147,6 +151,8 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images }) => {
                         </button>
                         <figcaption className="image-caption mt-2">
                             {getImageCaption(img_name, "short")}
+                            <hr className='my-2'></hr>
+                            {"$" + getPrice(img_name)}
                         </figcaption>
                     </section>
                 )
