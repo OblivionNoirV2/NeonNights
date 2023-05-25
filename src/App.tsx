@@ -74,8 +74,8 @@ const CartIcon = () => {
 }
 const Navbar = () => {
   return (
-    <>
-      <nav className='main-nav sticky top-0 bg-black neon-text w-full h-24 flex justify-between mr-4'>
+    <section className='sticky top-0'>
+      <nav className='main-nav  bg-black neon-text w-full h-24 flex justify-between mr-4'>
         <SiteLogo />
         <ReallyCoolScrollingText />
         <ul className='flex text-5xl mt-4'>
@@ -93,7 +93,7 @@ const Navbar = () => {
         <CartIcon />
       </nav>
       <hr></hr>
-    </>
+    </section>
   )
 };
 
