@@ -6,21 +6,13 @@ import { Link, Routes, Route } from 'react-router-dom';
 import Checkout from './Checkout';
 import Home from './Home';
 import Explore from './Sorting';
+import History from './History';
 //Want big night, synthy, future club vibes. Dark
 
 //do a cool gradient thing 
 //clicking on logo will act as home button
 
-const SiteLogo = () => {
-  return (
-    <section className='w-[10rem]'>
-      <Link to='/'>
-        <img src={require("./assets/NNlogo.png")} alt="logo"
-          className="h-full w-auto flex" />
-      </Link>
-    </section>
-  )
-}
+
 //the billboard rotates every so often
 //text courtesy of gpt4
 const scroll_advertisements_dict: { [key: number]: string } = {
@@ -52,19 +44,52 @@ const ReallyCoolScrollingText = () => {
   }, []);
 
   return (
-    <div className='overflow-hidden w-2/3 h-24 flex items-center mr-4 text-2xl'>
+    <div className='overflow-hidden w-2/3  mt-2 flex flex-col items-center mr-4 text-2xl'>
       <p className="whitespace-nowrap px-4 animate-ad">
         {ad}
       </p>
+      <ul className='flex flex-row text-3xl mt-2 middle-ul z-10 space-x-8'>
+        <li>
+          <button>
+            <Link to='/'>
+              Home
+            </Link>
+          </button>
+        </li>
+        <li >
+          <button>
+            <Link to='/Explore'>
+              Explore
+            </Link>
+          </button>
+        </li>
+        <li >
+          <button>
+            <Link to='/History'>
+              History
+            </Link>
+          </button>
+        </li>
+      </ul>
     </div>
   );
 };
+const SiteLogo = () => {
+  return (
+    <section className='w-48 '>
+      <Link to='/'>
+        <img src={require("./assets/NNlogo.png")} alt="logo"
+          className="h-full w-auto flex" />
+      </Link>
+    </section>
+  )
+}
 /*there will be a number positioned over this, 
 showing how many items are in the cart*/
 const CartIcon = () => {
   return (
-    <div className='w-24 h-24 mr-4'>
-      <button>
+    <div className='w-48 mr-4 -mt-8'>
+      <button className='cart-btn'>
         <Link to='/Checkout'>
           <img src={require("./assets/cart.png")} alt="cart"
             className="h-full w-auto flex" />
@@ -81,22 +106,7 @@ const Navbar = () => {
       h-32 flex justify-between mr-4'>
         <SiteLogo />
         <ReallyCoolScrollingText />
-        <ul className='flex text-5xl mt-4'>
-          <li className='mr-8'>
-            <button>
-              <Link to='/'>
-                Home
-              </Link>
-            </button>
-          </li>
-          <li className='-mr-6'>
-            <button>
-              <Link to='/Explore'>
-                Explore
-              </Link>
-            </button>
-          </li>
-        </ul>
+
         <CartIcon />
       </nav>
       <hr></hr>
@@ -111,6 +121,7 @@ function App() {
     <>
       <Navbar />
       <Routes>
+        <Route path='/History' element={<History />} />
         <Route path='/Checkout' element={<Checkout />} />
         <Route path='/SortItems' element={<Explore />} />
         <Route path='/' element={<Home />} />

@@ -73,11 +73,11 @@ html {
 
 }
 
-.main-nav>ul>li>button:hover {
+.middle-ul>li>button:hover {
     animation: white-border 1s ease-in-out infinite alternate;
 }
 
-.main-nav>ul>li>button {
+.middle-ul>li>button {
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10%;
 }
