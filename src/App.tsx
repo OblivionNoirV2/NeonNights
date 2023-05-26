@@ -43,7 +43,7 @@ const ReallyCoolScrollingText = () => {
     //Cleanup interval on unmount
     return () => clearInterval(intervalId);
   }, []);
-  const { cart } = useContext(CartContext);
+
   return (
     <div className='overflow-hidden w-2/3  mt-2 flex flex-col items-center mr-4 text-2xl'>
       <p className="whitespace-nowrap px-4 animate-ad">
@@ -70,9 +70,6 @@ const ReallyCoolScrollingText = () => {
               History
             </Link>
           </button>
-        </li>
-        <li>
-          {cart}
         </li>
       </ul>
     </div>
