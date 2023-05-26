@@ -11,7 +11,6 @@ import Explore from './Sorting';
 //do a cool gradient thing 
 //clicking on logo will act as home button
 
-//use spotify api to add a cool soundtrack to really drive in the future vibe?
 const SiteLogo = () => {
   return (
     <section className='w-[10rem]'>
@@ -24,7 +23,7 @@ const SiteLogo = () => {
 }
 //the billboard rotates every so often
 //text courtesy of gpt4
-const ScrollAdvertisementsDict: { [key: number]: string } = {
+const scroll_advertisements_dict: { [key: number]: string } = {
   0: 'Experience Life 2.0 with VirtuReal™: Bored of your humdrum existence? Experience life like never before in our immersive digital utopia. VirtuReal™ brings you the future of entertainment. Dive into a world of infinite possibilities, where reality is what you make it. With VirtuReal™, you are the architect of your own universe. Experience a vast array of digital landscapes, engage in extraordinary activities, and make unforgettable memories. Start your adventure today! VirtuReal™ - Your alternate reality awaits!',
   1: "Stay Ahead with Neurolink's Brain Enhancement Chips: Are you always a step behind? Can't keep up with the information age? Upgrade your mind with Neurolink's revolutionary brain enhancement chips. Boost memory, speed up learning, and access the net directly with your thoughts. Don't just survive the future - master it. Imagine a world where complex calculations take no more time than a thought, where every language is at your fingertips, where you can explore the depths of the digital universe with just a thought. Upgrade yourself with Neurolink and stay ahead.",
   2: "Elysium Skycars - Redefine Your Horizon: Tired of gridlock? Take to the skies with Elysium Skycars. Our cutting-edge vehicles combine luxury, speed, and effortless vertical takeoff. Cruise above the cityscape in style and experience the thrill of personal flight. Elysium Skycars - Redefine your horizon. Immerse yourself in a revolutionary travel experience - silence the noise of the city, glide through the clouds, and reach your destination in record time. Feel the thrill of freedom as you soar above it all with Elysium Skycars.",
@@ -41,11 +40,11 @@ const ReallyCoolScrollingText = () => {
   useEffect(() => {
     console.log("useEffect called");
     //Set initial advertisement
-    setAd(ScrollAdvertisementsDict[getRandomInt()]);
+    setAd(scroll_advertisements_dict[getRandomInt()]);
 
     //Set interval to change advertisement every minute
     const intervalId = setInterval(() => {
-      setAd(ScrollAdvertisementsDict[getRandomInt()]);
+      setAd(scroll_advertisements_dict[getRandomInt()]);
     }, 60000);
 
     //Cleanup interval on unmount
@@ -65,29 +64,37 @@ showing how many items are in the cart*/
 const CartIcon = () => {
   return (
     <div className='w-24 h-24 mr-4'>
-      <Link to='/Checkout'>
-        <img src={require("./assets/cart.png")} alt="cart"
-          className="h-full w-auto flex" />
-      </Link>
+      <button>
+        <Link to='/Checkout'>
+          <img src={require("./assets/cart.png")} alt="cart"
+            className="h-full w-auto flex" />
+        </Link>
+      </button>
     </div>
   )
-}
+};
+//todo: move home and explore to be below the ad
 const Navbar = () => {
   return (
     <section className='sticky top-0'>
-      <nav className='main-nav  bg-black neon-text w-full h-24 flex justify-between mr-4'>
+      <nav className='main-nav  bg-black neon-text w-full 
+      h-32 flex justify-between mr-4'>
         <SiteLogo />
         <ReallyCoolScrollingText />
         <ul className='flex text-5xl mt-4'>
           <li className='mr-8'>
-            <Link to='/'>
-              Home
-            </Link>
+            <button>
+              <Link to='/'>
+                Home
+              </Link>
+            </button>
           </li>
           <li className='-mr-6'>
-            <Link to='/Explore'>
-              Explore
-            </Link>
+            <button>
+              <Link to='/Explore'>
+                Explore
+              </Link>
+            </button>
           </li>
         </ul>
         <CartIcon />
