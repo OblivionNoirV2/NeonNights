@@ -98,7 +98,7 @@ const CartIcon = () => {
     </div>
   )
 };
-//todo: move home and explore to be below the ad
+
 const Navbar = () => {
   return (
     <section className='sticky top-0'>
