@@ -7,6 +7,7 @@ import Checkout from './Checkout';
 import Home from './Home';
 import Explore from './Sorting';
 import History from './History';
+import ProductPage from './ProductPage';
 import { CartContext } from './Context';
 //Want big night, synthy, future club vibes. Dark
 
@@ -125,6 +126,7 @@ function App() {
         <Route path='/History' element={<History />} />
         <Route path='/Checkout' element={<Checkout />} />
         <Route path='/SortItems' element={<Explore />} />
+        <Route path='/Product/:itemnumber' element={<ProductPage />} />
         <Route path='/' element={<Home />} />
       </Routes>
     </>
