@@ -119,11 +119,10 @@ const Navbar = () => {
 
 const VolButton: React.FC = () => {
   const [isThemeSongOn, setIsThemeSongOn] = useState(false);
+  //prevents multiple audio layers overlapping
   const NE = useRef(new Audio(ne));
 
-  useEffect(() => {
-    NE.current.loop = true;
-  }, []);
+  NE.current.loop = true;
 
   function toggleThemeSong() {
     console.log("toggleThemeSong called");

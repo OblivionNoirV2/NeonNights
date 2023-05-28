@@ -49,7 +49,7 @@ interface ProductInfoProps {
     price: number;
     item_number: number;
 }
-//price and item number
+//price and item number, also add a popularity ranking
 export const product_info: { [name: string]: ProductInfoProps } = {
     "ai": {
         price: 99999.99,
