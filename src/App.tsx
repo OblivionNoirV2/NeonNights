@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useRef, useEffect, useContext } from 'react';
 import './Sparkles.css';
 import { Link, Routes, Route } from 'react-router-dom';
 import Checkout from './Checkout';
@@ -11,6 +11,7 @@ import ProductPage from './ProductPage';
 import { CartContext } from './Context';
 //Want big night, synthy, future club vibes. Dark
 import ne from './assets/Neon Underground.wav';
+
 //do a cool gradient thing 
 //clicking on logo will act as home button
 
@@ -76,7 +77,7 @@ const ReallyCoolScrollingText = () => {
     </div>
   );
 };
-//acting a bit weird
+
 const SiteLogo = () => {
   return (
     <section className='w-1/12 h-1/12'>
@@ -119,33 +120,42 @@ const Navbar = () => {
 
 function App() {
   const [isThemeSongOn, setIsThemeSongOn] = useState(false);
-  const [NE, setNE] = useState(new Audio(ne));
+  const NE = useRef(new Audio(ne)); //Wrapping your audio object in a useRef hook
+
+  useEffect(() => {
+    NE.current.loop = true; //Setting the looping property only once, when the audio object is created
+  }, []); //Empty dependency array ensures this effect runs only on initial render
+
   const VolButton: React.FC = () => {
     return (
       <div className='w-full flex justify-end'>
-        <button onClick={() => toggleThemeSong}
+        <button onClick={toggleThemeSong}
           className='text-white mr-4'>
-          click me
+          {isThemeSongOn ?
+            'Pause Theme Song' : 'Play Theme Song'}
         </button>
       </div>
     )
   }
 
-
   function toggleThemeSong() {
+    console.log("toggleThemeSong called");
     if (isThemeSongOn) {
-      NE.pause();
+      NE.current.pause();
       setIsThemeSongOn(false);
     }
     else {
-      NE.play();
+      NE.current.play();
       setIsThemeSongOn(true);
     }
   }
   return (
     <>
       <Navbar />
-
+      <VolButton />
+      <audio>
+        <source src='./assets/Neon Underground.wav' />
+      </audio>
       <Routes>
         <Route path='/History' element={<History />} />
         <Route path='/Checkout' element={<Checkout />} />
