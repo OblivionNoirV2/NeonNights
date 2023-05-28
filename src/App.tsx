@@ -10,7 +10,7 @@ import History from './History';
 import ProductPage from './ProductPage';
 import { CartContext } from './Context';
 //Want big night, synthy, future club vibes. Dark
-
+import ne from './assets/Neon Underground.wav';
 //do a cool gradient thing 
 //clicking on logo will act as home button
 
@@ -46,7 +46,7 @@ const ReallyCoolScrollingText = () => {
   }, []);
 
   return (
-    <div className='overflow-hidden w-2/3  mt-2 flex flex-col items-center mr-4 text-2xl'>
+    <div className='overflow-hidden w-2/3 mr-16 mt-2 flex flex-col items-center text-2xl'>
       <p className="whitespace-nowrap px-4 animate-ad">
         {ad}
       </p>
@@ -76,12 +76,13 @@ const ReallyCoolScrollingText = () => {
     </div>
   );
 };
+//acting a bit weird
 const SiteLogo = () => {
   return (
-    <section className='w-48 '>
+    <section className='w-1/12 h-1/12'>
       <Link to='/'>
         <img src={require("./assets/NNlogo.png")} alt="logo"
-          className="h-full w-auto flex" />
+          className="h-full w-auto flex " />
       </Link>
     </section>
   )
@@ -90,25 +91,23 @@ const SiteLogo = () => {
 showing how many items are in the cart(number of strings in the array)*/
 const CartIcon = () => {
   return (
-    <div className='w-48 mr-4 -mt-8'>
-      <button className='cart-btn'>
-        <Link to='/Checkout'>
-          <img src={require("./assets/cart.png")} alt="cart"
-            className="h-full w-auto flex" />
-        </Link>
-      </button>
+    <div className='w-1/12 -mr-16'>
+      <Link to='/Checkout'>
+        <img src={require("./assets/cart.png")} alt="cart"
+          className="h-full w-auto flex" />
+      </Link>
     </div>
   )
 };
+
 
 const Navbar = () => {
   return (
     <section className='sticky top-0'>
       <nav className='main-nav  bg-black neon-text w-full 
-      h-32 flex justify-between mr-4'>
+      h-32 flex justify-between'>
         <SiteLogo />
         <ReallyCoolScrollingText />
-
         <CartIcon />
       </nav>
       <hr></hr>
@@ -119,9 +118,34 @@ const Navbar = () => {
 
 
 function App() {
+  const [isThemeSongOn, setIsThemeSongOn] = useState(false);
+  const [NE, setNE] = useState(new Audio(ne));
+  const VolButton: React.FC = () => {
+    return (
+      <div className='w-full flex justify-end'>
+        <button onClick={() => toggleThemeSong}
+          className='text-white mr-4'>
+          click me
+        </button>
+      </div>
+    )
+  }
+
+
+  function toggleThemeSong() {
+    if (isThemeSongOn) {
+      NE.pause();
+      setIsThemeSongOn(false);
+    }
+    else {
+      NE.play();
+      setIsThemeSongOn(true);
+    }
+  }
   return (
     <>
       <Navbar />
+
       <Routes>
         <Route path='/History' element={<History />} />
         <Route path='/Checkout' element={<Checkout />} />
