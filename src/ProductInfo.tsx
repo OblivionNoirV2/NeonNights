@@ -48,46 +48,57 @@ export const image_desc: { [key: string]: ImgDescProps } = {
 interface ProductInfoProps {
     price: number;
     item_number: number;
+    popularity: number;
 }
-//price and item number, also add a popularity ranking
+//price/item number/popularity
 export const product_info: { [name: string]: ProductInfoProps } = {
     "ai": {
         price: 99999.99,
-        item_number: 1
+        item_number: 1,
+        popularity: 4
     },
     "armor": {
         price: 8599.99,
-        item_number: 2
+        item_number: 2,
+        popularity: 5
+
     },
     "katana": {
         price: 2399.99,
-        item_number: 3
+        item_number: 3,
+        popularity: 3
     },
     "cpu": {
         price: 999.99,
-        item_number: 4
+        item_number: 4,
+        popularity: 6
     },
     //they learned from Nvidia
     "gpu": {
         price: 1799.99,
-        item_number: 5
+        item_number: 5,
+        popularity: 7
     },
     "glasses": {
         price: 599.99,
-        item_number: 6
+        item_number: 6,
+        popularity: 8
     },
     //american style
     "pill": {
         price: 199.99,
-        item_number: 7
+        item_number: 7,
+        popularity: 9
     },
     "chip": {
         price: 499.99,
-        item_number: 8
+        item_number: 8,
+        popularity: 2
     },
     "launcher": {
         price: 4999.99,
-        item_number: 9
+        item_number: 9,
+        popularity: 1
     }
 }
 export function getImageCaption(img: string, length: string) {
