@@ -117,26 +117,13 @@ const Navbar = () => {
 };
 
 
-
-function App() {
+const VolButton: React.FC = () => {
   const [isThemeSongOn, setIsThemeSongOn] = useState(false);
-  const NE = useRef(new Audio(ne)); //Wrapping your audio object in a useRef hook
+  const NE = useRef(new Audio(ne));
 
   useEffect(() => {
-    NE.current.loop = true; //Setting the looping property only once, when the audio object is created
-  }, []); //Empty dependency array ensures this effect runs only on initial render
-
-  const VolButton: React.FC = () => {
-    return (
-      <div className='w-full flex justify-end'>
-        <button onClick={toggleThemeSong}
-          className='text-white mr-4'>
-          {isThemeSongOn ?
-            'Pause Theme Song' : 'Play Theme Song'}
-        </button>
-      </div>
-    )
-  }
+    NE.current.loop = true;
+  }, []);
 
   function toggleThemeSong() {
     console.log("toggleThemeSong called");
@@ -149,6 +136,20 @@ function App() {
       setIsThemeSongOn(true);
     }
   }
+
+  return (
+    <div className='sticky top-[9rem] z-10 w-full flex justify-end'>
+      <button onClick={toggleThemeSong}
+        className='text-white mr-4 '>
+        {isThemeSongOn ?
+          'Pause Theme Song' : 'Play Theme Song'}
+      </button>
+    </div>
+  )
+}
+
+function App() {
+
   return (
     <>
       <Navbar />
