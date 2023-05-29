@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as pi from './ProductInfo';
 import { Link } from 'react-router-dom';
-const ImagesArray: string[] = [
+export const ImagesArray: string[] = [
     require('./assets/ai.png'),
     require('./assets/armor.png'),
     require('./assets/katana.png'),
