@@ -127,11 +127,10 @@ export const product_name_lookup: { [key: string]: string } = {
 
 }
 
-export const images_sources: string[] = [
+export const images_sources = [
     require('./assets/ai.png'),
     require('./assets/armor.png'),
     require('./assets/katana.png'),
-
     require('./assets/cpu.png'),
     require('./assets/gpu.png'),
     require('./assets/glasses.png'),
@@ -140,3 +139,16 @@ export const images_sources: string[] = [
     require('./assets/launcher.png'),
 
 ]
+
+export const image_source_lookup: { [key: string]: string } = {
+    'ai': images_sources[0],
+    'armor': images_sources[1],
+    'katana': images_sources[2],
+    'cpu': images_sources[3],
+    'gpu': images_sources[4],
+    'glasses': images_sources[5],
+    'pill': images_sources[6],
+    'chip': images_sources[7],
+    'launcher': images_sources[8]
+
+}

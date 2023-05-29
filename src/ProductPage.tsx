@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import * as pi from './ProductInfo';
-import { images_sources } from './ProductInfo';
+import { images_sources, image_source_lookup } from './ProductInfo';
 import { CartContext } from './Context';
 
 interface ProductInfoProps {
