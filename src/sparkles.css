@@ -31,6 +31,7 @@ hr {
 
 html {
     overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .image-grid {
@@ -114,4 +115,13 @@ html {
     font-size: 1.5rem;
     font-weight: bold;
     box-shadow: 0 0 .5rem rgba(255, 255, 255, 1);
+}
+
+.cart-page {
+    color: rgb(31, 81, 255);
+    animation: neon-pink-border 5s ease-in-out infinite alternate;
+}
+
+.checkout {
+    color: rgb(31, 81, 255);
 }

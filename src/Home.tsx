@@ -4,23 +4,12 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as pi from './ProductInfo';
 import { Link } from 'react-router-dom';
-export const ImagesArray: string[] = [
-    require('./assets/ai.png'),
-    require('./assets/armor.png'),
-    require('./assets/katana.png'),
+import { images_sources } from './ProductInfo';
 
-    require('./assets/cpu.png'),
-    require('./assets/gpu.png'),
-    require('./assets/glasses.png'),
-    require('./assets/pill.png'),
-    require('./assets/chip.png'),
-    require('./assets/launcher.png'),
-
-]
 const Home = () => {
     return (
         <main className='neon-text'>
-            <ImagesGrid images={ImagesArray} />
+            <ImagesGrid images={images_sources} />
         </main>
     )
 }
@@ -37,7 +26,7 @@ const ImagesGrid: React.FC<ImagesGridProps> = ({ images }) => {
                 //gets rid of /assets/
                 const match = img.match(/\/([a-z]+)\./i);
                 const img_name = match ? match[1] : '';
-                const item_number = pi.product_info[img_name]?.item_number; // get the item number from product_info
+                const item_number = pi.product_info[img_name]?.item_number; //get the item number from product_info
 
                 console.log(img_name);
                 return (

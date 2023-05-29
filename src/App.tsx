@@ -96,7 +96,7 @@ const CartIcon = () => {
   console.log("cart length: " + cart.length)
   return (
     <div className='relative w-1/12 -mr-16'>
-      <div className='absolute top-1/2 left-1/3 text-lg text-white'>
+      <div className='absolute top-1/2 left-1/3 text-lg text-white '>
         {cart.length}
       </div>
       <Link to='/Checkout'>

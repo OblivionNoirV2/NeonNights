@@ -126,3 +126,17 @@ export const product_name_lookup: { [key: string]: string } = {
     'launcher': 'Rocket Launcher'
 
 }
+
+export const images_sources: string[] = [
+    require('./assets/ai.png'),
+    require('./assets/armor.png'),
+    require('./assets/katana.png'),
+
+    require('./assets/cpu.png'),
+    require('./assets/gpu.png'),
+    require('./assets/glasses.png'),
+    require('./assets/pill.png'),
+    require('./assets/chip.png'),
+    require('./assets/launcher.png'),
+
+]

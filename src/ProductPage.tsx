@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useContext } from 'react';
 import * as pi from './ProductInfo';
-import { ImagesArray } from './Home';
+import { images_sources } from './ProductInfo';
 import { CartContext } from './Context';
 
 interface ProductInfoProps {
@@ -30,7 +30,7 @@ const ProductPage = () => {
     }
 
     //find the image path if it exists
-    const product_image = ImagesArray.find(
+    const product_image = images_sources.find(
         img => img.includes(product_data.name)
     );
     function handleAddToCart() {
