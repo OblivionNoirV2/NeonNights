@@ -91,8 +91,14 @@ const SiteLogo = () => {
 /*there will be a number positioned over this, 
 showing how many items are in the cart(number of strings in the array)*/
 const CartIcon = () => {
+  const { cart } = useContext(CartContext);
+
+  console.log("cart length: " + cart.length)
   return (
-    <div className='w-1/12 -mr-16'>
+    <div className='relative w-1/12 -mr-16'>
+      <div className='absolute top-1/2 left-1/3 text-lg text-white'>
+        {cart.length}
+      </div>
       <Link to='/Checkout'>
         <img src={require("./assets/cart.png")} alt="cart"
           className="h-full w-auto flex" />
@@ -100,6 +106,7 @@ const CartIcon = () => {
     </div>
   )
 };
+
 
 
 const Navbar = () => {

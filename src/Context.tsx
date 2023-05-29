@@ -12,7 +12,7 @@ export const CartContext = createContext<CartContextProps>({
 })
 
 export function CartContextProvider({ children }: { children: React.ReactElement }) {
-    const [cart, setCart] = useState<string[]>(["testing"]);
+    const [cart, setCart] = useState<string[]>([]);
     return (
         <CartContext.Provider value={{ cart, setCart }}>
             {children}
