@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import { useState, useRef, useEffect, useContext } from 'react';
 import './Sparkles.css';
 import { Link, Routes, Route } from 'react-router-dom';
-import Checkout from './Checkout';
+
 import Home from './Home';
 import Explore from './Sorting';
 import History from './History';
@@ -11,7 +11,8 @@ import ProductPage from './ProductPage';
 import { CartContext } from './Context';
 //Want big night, synthy, future club vibes. Dark
 import ne from './assets/Neon Underground.wav';
-
+import CartElement from './Cart';
+import Checkout from './Checkout';
 //do a cool gradient thing 
 //clicking on logo will act as home button
 
@@ -99,7 +100,7 @@ const CartIcon = () => {
       <div className='absolute top-1/2 left-1/3 text-lg text-white '>
         {cart.length}
       </div>
-      <Link to='/Checkout'>
+      <Link to='/Cart'>
         <img src={require("./assets/cart.png")} alt="cart"
           className="h-full w-auto flex" />
       </Link>
@@ -165,6 +166,7 @@ function App() {
       </audio>
       <Routes>
         <Route path='/History' element={<History />} />
+        <Route path='/Cart' element={<CartElement />} />
         <Route path='/Checkout' element={<Checkout />} />
         <Route path='/SortItems' element={<Explore />} />
         <Route path='/Product/:itemnumber' element={<ProductPage />} />
