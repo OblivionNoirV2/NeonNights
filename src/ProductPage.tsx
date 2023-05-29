@@ -1,6 +1,9 @@
 import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
 import * as pi from './ProductInfo';
 import { ImagesArray } from './Home';
+import { CartContext } from './Context';
+
 interface ProductInfoProps {
     price: number;
     item_number: number;
@@ -14,22 +17,13 @@ function getProductData(item_number: number): ProductInfoProps | undefined {
         }
     }
 }
-const product_name_lookup: { [key: string]: string } = {
-    'ai': 'Aeon Plus AI Assistant',
-    'armor': 'Deflector X Laser Armor',
-    'katana': 'Shogun X Laser Katana',
-    'cpu': 'Nova Centauri 1024 core, 98.6 GHz CPU',
-    'gpu': 'Hyperion Z 9090zi GPU',
-    'glasses': 'VisionX Coding Glasses',
-    'pill': 'Prometheus Pill',
-    'chip': 'Pandora V4.0 Neural Chip',
-    'launcher': 'Rocket Launcher'
 
-}
 const ProductPage = () => {
+    const { cart, setCart } = useContext(CartContext);
     const { itemnumber } = useParams();
     const item_number_int = parseInt(itemnumber || '0');
-    const product_data = getProductData(item_number_int);
+    const product_data = getProductData(item_number_int) as ProductInfoProps;
+
 
     if (!product_data) {
         return <div className='flex justify-center mx-auto text-white text-7xl'>Product not found</div>;
@@ -39,14 +33,17 @@ const ProductPage = () => {
     const product_image = ImagesArray.find(
         img => img.includes(product_data.name)
     );
-
+    function handleAddToCart() {
+        setCart([...cart, product_data.name]);
+        console.log("cart" + cart);
+    }
     return (
         <main className=" w-full ">
             <section className='flex flex-row b mx-auto w-2/3 product-page
             rounded-2xl'>
                 <section className='flex flex-col w-1/2 '>
                     <h1 className='text-7xl ml-[2rem] '>{
-                        product_name_lookup[product_data.name]
+                        pi.product_name_lookup[product_data.name]
                     }</h1>
                     {
                         product_image &&
@@ -57,7 +54,9 @@ const ProductPage = () => {
                 <section className='flex flex-col w-1/2 ml-8 mr-8 mt-48'>
                     <p className='text-3xl leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
                     <h2 className='text-3xl mt-8'>${product_data.price}</h2>
-                    <button className='add-btn mt-8'>Add to cart</button>
+                    <button onClick={handleAddToCart}
+
+                        className='add-btn mt-8'>Add to cart</button>
                     {/*for the rocket launcher*/}
                     {
                         product_data.item_number == 9 &&

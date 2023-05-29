@@ -113,3 +113,16 @@ export function getImageCaption(img: string, length: string) {
 export function getPrice(img: string) {
     return product_info[img].price;
 }
+
+export const product_name_lookup: { [key: string]: string } = {
+    'ai': 'Aeon Plus AI Assistant',
+    'armor': 'Deflector X Laser Armor',
+    'katana': 'Shogun X Laser Katana',
+    'cpu': 'Nova Centauri 1024 core, 98.6 GHz CPU',
+    'gpu': 'Hyperion Z 9090zi GPU',
+    'glasses': 'VisionX Coding Glasses',
+    'pill': 'Prometheus Pill',
+    'chip': 'Pandora V4.0 Neural Chip',
+    'launcher': 'Rocket Launcher'
+
+}
