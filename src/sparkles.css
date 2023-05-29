@@ -73,6 +73,19 @@ html {
 
 }
 
+@keyframes neon-pink-border {
+    0% {
+        box-shadow: 0 0 1rem rgba(255, 16, 240, 0);
+
+    }
+
+    100% {
+        box-shadow: 0 0 1rem rgba(255, 16, 240, 1);
+
+    }
+
+}
+
 .middle-ul>li>button:hover {
     animation: white-border 1s ease-in-out infinite alternate;
 }
@@ -80,4 +93,25 @@ html {
 .middle-ul>li>button {
     padding: 1rem 1rem 1rem 1rem;
     border-radius: 10%;
+}
+
+.product-page {
+    color: rgb(31, 81, 255);
+    animation: neon-pink-border 5s ease-in-out infinite alternate;
+}
+
+.prod-image {
+    box-shadow: 0 0 .5rem rgba(255, 255, 255, 1);
+    margin: 2rem 2rem 2rem 2rem;
+}
+
+.add-btn {
+    background-color: rgb(31, 81, 255);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10%;
+    padding: 1rem 1rem 1rem 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 0 .5rem rgba(255, 255, 255, 1);
 }

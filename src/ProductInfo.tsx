@@ -41,7 +41,7 @@ export const image_desc: { [key: string]: ImgDescProps } = {
 
     "launcher": {
         short_desc: "The Titan Omega Rocket Launcher offers precision and high-impact strikes with fusion-propelled rockets.",
-        long_desc: "Step into the future of firepower with the Titan Omega Rocket Launcher. Its fusion-propelled rockets and smart-targeting system make it the perfect tool for precise, high-impact strikes. *Probably illegal but we'll sell it to you anyway."
+        long_desc: "Step into the future of firepower with the Titan Omega Rocket Launcher. Its fusion-propelled rockets and smart-targeting system make it the perfect tool for precise, high-impact strikes."
     },
 
 }

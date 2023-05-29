@@ -32,7 +32,7 @@ const ProductPage = () => {
     const product_data = getProductData(item_number_int);
 
     if (!product_data) {
-        return <div>Product not found</div>;
+        return <div className='flex justify-center mx-auto text-white text-7xl'>Product not found</div>;
     }
 
     //find the image path if it exists
@@ -42,18 +42,29 @@ const ProductPage = () => {
 
     return (
         <main className=" w-full ">
-            <section className='flex flex-row bg-red-500 mx-48'>
-                <section className=' flex flex-col'>
-                    <h1 className='text-8xl '>{product_name_lookup[product_data.name]}</h1>
+            <section className='flex flex-row b mx-auto w-2/3 product-page
+            rounded-2xl'>
+                <section className='flex flex-col w-1/2 '>
+                    <h1 className='text-7xl ml-[2rem] '>{
+                        product_name_lookup[product_data.name]
+                    }</h1>
                     {
                         product_image &&
-                        <img src={product_image} />
+                        <img src={product_image}
+                            className='rounded-2xl prod-image' />
                     }
                 </section>
-                <section className='flex flex-col'>
-                    <p>{pi.getImageCaption(product_data.name, "long")}</p>
-                    <h2>{product_data.price}</h2>
-                    <button>Add to cart</button>
+                <section className='flex flex-col w-1/2 ml-8 mr-8 mt-48'>
+                    <p className='text-3xl leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
+                    <h2 className='text-3xl mt-8'>${product_data.price}</h2>
+                    <button className='add-btn mt-8'>Add to cart</button>
+                    {/*for the rocket launcher*/}
+                    {
+                        product_data.item_number == 9 &&
+                        <div className='text-xs flex justify-end mt-80'>
+                            *probably illegal but we'll sell it to you anyway
+                        </div>
+                    }
                 </section>
             </section>
         </main>
