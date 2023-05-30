@@ -87,7 +87,7 @@ html {
 
 }
 
-.middle-ul>li>button:hover {
+button:hover {
     animation: white-border 1s ease-in-out infinite alternate;
 }
 
