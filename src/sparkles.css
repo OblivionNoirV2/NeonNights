@@ -167,3 +167,24 @@ button:not(.checkout-btn):hover {
 input {
     color: black;
 }
+
+.grid-cols-cartItem {
+    grid-template-columns: 1fr 2fr;
+    width: 40rem;
+}
+
+.col-img {
+    max-width: 100%;
+}
+
+.col-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    width: 2rem;
+}

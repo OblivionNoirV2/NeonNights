@@ -29,7 +29,7 @@ const CartElement = () => {
     }, [cart])
 
     return (
-        <main className=" w-2/5 justify-center m-auto">
+        <main className=" w-3/5 justify-center m-auto">
             <h1 className="text-6xl checkout">Cart</h1>
             <hr></hr>
             <section className="flex flex-col">
@@ -38,43 +38,48 @@ const CartElement = () => {
                         <div className="flex text-4xl py-8 text-white">
                             Your cart is empty
                         </div>
-                        :
-                        <ul className="flex flex-col w-full justify-start ml-4 text-3xl">
+                        ://make two different uls, for the images and the other stuff
+                        <ul className="flex flex-col justify-start ml-4 text-3xl">
                             {unique_items.map((item, index) => (
-                                <li key={index} className="flex my-8
-                                 text-white cart-page">
-                                    <img src={image_source_lookup[item]}
-                                        className="w-1/12 h-1/12">
-                                    </img>
-                                    <div className="flex flex-col w-full ml-4">
+                                <li key={index} className="grid grid-cols-cartItem my-8 text-white">
+                                    <div className="col-img">
+                                        <img src={image_source_lookup[item]}
+                                            className="w-full">
+                                        </img>
+                                    </div>
+                                    <div className="flex flex-col justify-around
+                                     col-content ml-4 w-1/5 lg:w-1/3">
                                         {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
-                                        <br></br>
                                         <div className="text-2xl">
                                             {formatCurrency(getPrice(item))}
                                         </div>
+                                        <div className="flex justify-between items-center">
+                                            <div className="button-group">
+                                                <button onClick={() => handleRemoval(item)}
+                                                    className="plus-minus-btn flex 
+h-fit px-2 rounded-lg"
+                                                    title="Subtract by one">
+                                                    -
+                                                </button>
+                                                <button onClick={() => handleAddition(item)}
+                                                    className="plus-minus-btn flex 
+h-fit px-2 rounded-lg"
+                                                    title="Add one">
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <button onClick={() => handleRemoval(item)}
-                                        className="plus-minus-btn flex 
-                                    h-fit px-4 rounded-lg"
-                                        title="Subtract by one">
-                                        -
-                                    </button>
-                                    <button onClick={() => handleAddition(item)}
-                                        className="plus-minus-btn flex 
-                                    h-fit px-4  rounded-lg"
-                                        title="Add one">
-                                        +
-                                    </button>
                                 </li>
                             ))}
                         </ul>
+
                     }
                 </section>
                 {cart.length !== 0 &&
-
                     <section className="text-white">
                         Total: {formatCurrency(total)}
-
                     </section>
                 }
             </section>
