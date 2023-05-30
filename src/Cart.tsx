@@ -8,7 +8,7 @@ import { getPrice } from "./ProductInfo";
 const CartElement = () => {
     const { cart, setCart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
-
+    //- button
     function handleRemoval(item: string) {
         let index = cart.indexOf(item);
         if (index !== -1) {
@@ -17,7 +17,7 @@ const CartElement = () => {
             setCart(new_cart);
         }
     }
-
+    //+ button
     function handleAddition(item: string) {
         setCart([...cart, item]);
     }
@@ -65,14 +65,25 @@ const CartElement = () => {
                     }
                 </section>
                 {cart.length !== 0 &&
+
                     <section className="text-white">
                         Total: ${Number(cart.reduce(
                             (acc, item) => acc + getPrice(item), 0).toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2 })}
 
                     </section>
+
+
                 }
             </section>
             <hr></hr>
+            {cart.length !== 0 &&
+                //this one gets a special animation
+                <button
+                    className="text-white flex justify-center mx-auto 
+                    text-3xl px-6 py-4 mt-4 rounded-xl checkout-btn">
+                    Checkout
+                </button>
+            }
         </main>
     )
 }

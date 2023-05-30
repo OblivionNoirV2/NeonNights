@@ -87,8 +87,24 @@ html {
 
 }
 
-button:hover {
+button:not(.checkout-btn):hover {
     animation: white-border 1s ease-in-out infinite alternate;
+}
+
+.checkout-btn {
+    animation: fancy-checkout-btn 1s ease-in-out infinite alternate;
+
+}
+
+@keyframes fancy-checkout-btn {
+    0% {
+        box-shadow: 0 0 1rem rgba(255, 16, 240, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 1rem rgba(31, 81, 255, 1);
+
+    }
 }
 
 .middle-ul>li>button {
