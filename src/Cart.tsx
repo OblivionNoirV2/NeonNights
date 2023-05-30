@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { product_name_lookup } from "./ProductInfo";
-import { CartContext } from "./Context";
+import { CartContext, SubTotalContext } from "./Context";
 import { images_sources, image_source_lookup } from "./ProductInfo";
 import { getPrice } from "./ProductInfo";
 
 const CartElement = () => {
     const { cart, setCart } = useContext(CartContext);
+    const { total, setTotal } = useContext(SubTotalContext);
     const unique_items = Array.from(new Set(cart));
     //- button
     function handleRemoval(item: string) {
@@ -21,6 +22,11 @@ const CartElement = () => {
     function handleAddition(item: string) {
         setCart([...cart, item]);
     }
+
+    useEffect(() => {
+        setTotal(Number(cart.reduce(
+            (acc, item) => acc + getPrice(item), 0).toFixed(2)))
+    }, [cart])
 
     return (
         <main className=" w-2/5 justify-center m-auto">
@@ -67,22 +73,21 @@ const CartElement = () => {
                 {cart.length !== 0 &&
 
                     <section className="text-white">
-                        Total: ${Number(cart.reduce(
-                            (acc, item) => acc + getPrice(item), 0).toFixed(2)).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                        Total: ${total}
 
                     </section>
-
-
                 }
             </section>
             <hr></hr>
             {cart.length !== 0 &&
                 //this one gets a special animation
-                <button
-                    className="text-white flex justify-center mx-auto 
-                    text-3xl px-6 py-4 mt-4 rounded-xl checkout-btn">
-                    Checkout
-                </button>
+                <Link to="/checkout">
+                    <button
+                        className="text-white flex justify-center mx-auto 
+                        text-3xl px-6 py-4 mt-4 rounded-xl checkout-btn">
+                        Checkout
+                    </button>
+                </Link>
             }
         </main>
     )

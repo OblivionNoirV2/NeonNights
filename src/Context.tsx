@@ -19,4 +19,23 @@ export function CartContextProvider({ children }: { children: React.ReactElement
         </CartContext.Provider>
     )
 }
+
+//used to pass the subtotal to the checkout page
+interface SubTotalProps {
+    total: number;
+    setTotal: (total: number) => void;
+}
+export const SubTotalContext = createContext<SubTotalProps>({
+    total: 0,
+    setTotal: () => { }
+})
+
+export function SubTotalContextProvider({ children }: { children: React.ReactElement }) {
+    const [total, setTotal] = useState<number>(0);
+    return (
+        <SubTotalContext.Provider value={{ total, setTotal }}>
+            {children}
+        </SubTotalContext.Provider>
+    )
+}
 export default {}
