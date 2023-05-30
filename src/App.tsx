@@ -5,7 +5,7 @@ import './Sparkles.css';
 import { Link, Routes, Route } from 'react-router-dom';
 
 import Home from './Home';
-import Explore from './Sorting';
+
 import Account from './Account';
 import ProductPage from './ProductPage';
 import { CartContext } from './Context';
@@ -79,8 +79,8 @@ const ButtonsLi: React.FC<ButtonsLiProps> = ({ is_mobile }) => {
       </li>
       <li >
         <button className={is_mobile ? 'px-4 py-2 text-3xl rounded-lg' : ''}>
-          <Link to='/Explore'>
-            Explore
+          <Link to='/Account'>
+            Account
           </Link>
         </button>
       </li>
@@ -200,7 +200,7 @@ function App() {
       <Routes>
         <Route path='/Cart' element={<CartElement />} />
         <Route path='/Checkout' element={<Checkout />} />
-        <Route path='/SortItems' element={<Explore />} />
+        <Route path='/Account' element={<Account />} />
         <Route path='/Product/:itemnumber' element={<ProductPage />} />
         <Route path='/' element={<Home />} />
       </Routes>

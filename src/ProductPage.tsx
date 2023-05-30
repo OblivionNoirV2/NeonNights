@@ -41,12 +41,13 @@ const ProductPage = () => {
     const AddedMessage = (props: { product: string }) => {
         return (
             <div className={isMessageShown ?
-                'flex text-white text-xl mt-8 ml-4 flash-msg' :
+                'flex text-white text-sm lg:text-xl mt-4 ml-4 mr-4 flash-msg flex-wrap overflow-auto' :
                 'hidden'}>
                 {props.product} added to cart
             </div>
         )
     }
+
     //text, button will move below the image for mobile
     return (
         <main className="mx-8 lg:mx-0 lg:w-full">
@@ -64,9 +65,9 @@ const ProductPage = () => {
                     }
                 </section>
                 <section className='flex flex-col w-full lg:w-2/3 mx-4 lg:mx-8 mt-8 lg:mt-48'>
-                    <p className='text-xl mx-4 lg:mx-0 lg:text-3xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
+                    <p className='text-lg mx-4 lg:mx-0 lg:text-3xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
                     <div className='flex'>
-                        <h2 className='text-3xl mt-8 ml-4 lg:ml-0'>${product_data.price}</h2>
+                        <h2 className='text-xl lg:text-3xl mt-8 ml-4 lg:ml-0'>${product_data.price}</h2>
                         <AddedMessage product={pi.product_name_lookup[product_data.name]} />
                     </div>
                     <button onClick={() => handleAddToCart(pi.product_name_lookup[product_data.name])}
