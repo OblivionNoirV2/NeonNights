@@ -145,7 +145,8 @@ button:not(.checkout-btn):hover {
     color: rgb(31, 81, 255);
 }
 
-.add-cart-btn:hover {
+.add-cart-btn:hover,
+.top-btn {
     color: rgb(255, 16, 240)
 }
 

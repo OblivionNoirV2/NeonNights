@@ -48,30 +48,45 @@ const ReallyCoolScrollingText = () => {
   }, []);
 
   return (
-    <div className='overflow-hidden w-full mr-16 mt-2 flex flex-col
-     items-center lg:text-2xl sm:text-lg'>
+
+    <div className='overflow-hidden w-full mr-12 mt-2 flex flex-col
+     items-center text-2xl'>
+
       <p className="whitespace-nowrap px-4 animate-ad">
         {ad}
       </p>
-      <ul className='flex flex-row text-3xl mt-2 middle-ul z-10 space-x-8'>
-        <li>
-          <button>
-            <Link to='/'>
-              Home
-            </Link>
-          </button>
-        </li>
-        <li >
-          <button>
-            <Link to='/Explore'>
-              Explore
-            </Link>
-          </button>
-        </li>
+
+
+      <ul className='flex flex-row text-[3vmin] mt-2 middle-ul z-10 space-x-8'>
+        <ButtonsLi is_mobile={false} />
       </ul>
     </div>
   );
 };
+interface ButtonsLiProps {
+  is_mobile: boolean;
+}
+//different classes for mobile/desktop
+const ButtonsLi: React.FC<ButtonsLiProps> = ({ is_mobile }) => {
+  return (
+    <>
+      <li>
+        <button className={is_mobile ? 'ml-4 px-4 py-2 text-3xl rounded-lg' : ''}>
+          <Link to='/'>
+            Home
+          </Link>
+        </button>
+      </li>
+      <li >
+        <button className={is_mobile ? 'px-4 py-2 text-3xl rounded-lg' : ''}>
+          <Link to='/Explore'>
+            Explore
+          </Link>
+        </button>
+      </li>
+    </>
+  )
+}
 
 const SiteLogo = () => {
   return (
@@ -89,7 +104,7 @@ const CartIcon = () => {
   const { cart } = useContext(CartContext);
 
   return (
-    <div className='ml-auto relative mr-4'>
+    <div className='ml-auto relative'>
       <div className='absolute top-16 right-10 text-lg text-white '>
         {cart.length}
       </div>
@@ -105,13 +120,37 @@ const CartIcon = () => {
 
 
 const Navbar = () => {
+  const [is_mobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   return (
     <section className='sticky top-0'>
-      <nav className='main-nav  bg-black neon-text w-full 
-      h-32 flex justify-between'>
-        <SiteLogo />
-        <ReallyCoolScrollingText />
-        <CartIcon />
+      <nav className='main-nav bg-black neon-text w-full 
+      h-32 flex '>
+        {is_mobile ?
+          <section className='flex flex-row top-btn'>
+            <ul className='flex flex-row space-x-8 text-2xl mt-10'>
+              <ButtonsLi is_mobile={true} />
+            </ul>
+            <CartIcon />
+          </section>
+          :
+          <>
+            <SiteLogo />
+            <ReallyCoolScrollingText />
+            <CartIcon />
+          </>
+        }
       </nav>
       <hr></hr>
     </section>
@@ -141,7 +180,7 @@ const VolButton: React.FC = () => {
   return (
     <div className='sticky top-[9rem] z-10 w-full flex justify-end'>
       <button onClick={toggleThemeSong}
-        className='text-white mr-4 '>
+        className='text-white mr-4 py-2 px-4 rounded-lg '>
         {isThemeSongOn ?
           'Pause Theme Song' : 'Play Theme Song'}
       </button>
