@@ -29,7 +29,7 @@ const CartElement = () => {
     }, [cart])
 
     return (
-        <main className=" w-3/5 justify-center m-auto">
+        <main className=" w-3/5 ml-16 justify-center lg:ml-auto m-auto">
             <h1 className="text-6xl checkout">Cart</h1>
             <hr></hr>
             <section className="flex flex-col">
@@ -39,12 +39,12 @@ const CartElement = () => {
                             Your cart is empty
                         </div>
                         ://make two different uls, for the images and the other stuff
-                        <ul className="flex flex-col justify-start ml-4 text-3xl">
+                        <ul className="flex flex-col ml-4 text-3xl">
                             {unique_items.map((item, index) => (
                                 <li key={index} className="grid grid-cols-cartItem my-8 text-white">
                                     <div className="col-img">
                                         <img src={image_source_lookup[item]}
-                                            className="w-full">
+                                            className="w-full h-auto object-cover">
                                         </img>
                                     </div>
                                     <section className="flex flex-col justify-around

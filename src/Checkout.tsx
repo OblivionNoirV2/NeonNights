@@ -91,7 +91,7 @@ const Checkout = () => {
                                 <li className="flex flex-row ml-12">
 
                                     <img src={image_source_lookup[item]}
-                                        className="w-2/12 h-2/12 my-4 ml-4">
+                                        className="w-full my-4 ml-4">
                                     </img>
                                     <section className="flex-col ml-4 mt-8">
                                         <div className="text-xl">
