@@ -128,3 +128,17 @@ button:hover {
 .add-cart-btn:hover {
     color: rgb(255, 16, 240)
 }
+
+.flash-msg {
+    animation: quickfade 1s ease-in-out;
+}
+
+@keyframes quickfade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
