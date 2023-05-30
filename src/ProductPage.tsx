@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import * as pi from './ProductInfo';
 import { images_sources, image_source_lookup } from './ProductInfo';
 import { CartContext } from './Context';
@@ -23,7 +23,7 @@ const ProductPage = () => {
     const { itemnumber } = useParams();
     const item_number_int = parseInt(itemnumber || '0');
     const product_data = getProductData(item_number_int) as ProductInfoProps;
-
+    const [isMessageShown, setIsMessageShown] = useState(false);
 
     if (!product_data) {
         return <div className='flex justify-center mx-auto text-white text-7xl'>Product not found</div>;
@@ -33,10 +33,19 @@ const ProductPage = () => {
     const product_image = images_sources.find(
         img => img.includes(product_data.name)
     );
-    function handleAddToCart() {
+    function handleAddToCart(product: string) {
         setCart([...cart, product_data.name]);
-        console.log("cart" + cart);
+        setIsMessageShown(true);
+        setTimeout(() => setIsMessageShown(false), 3000)
     }
+    const AddedMessage = (props: { product: string }) => {
+        return (
+            <div className={isMessageShown ? 'flex text-white text-3xl mt-8 ml-4' : 'hidden'}>
+                {props.product} added to cart
+            </div>
+        )
+    }
+
     return (
         <main className=" w-full ">
             <section className='flex flex-row b mx-auto w-2/3 product-page
@@ -53,10 +62,12 @@ const ProductPage = () => {
                 </section>
                 <section className='flex flex-col w-1/2 ml-8 mr-8 mt-48'>
                     <p className='text-3xl leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
-                    <h2 className='text-3xl mt-8'>${product_data.price}</h2>
-                    <button onClick={handleAddToCart}
-
-                        className='add-btn mt-8'>Add to cart</button>
+                    <div className='flex'>
+                        <h2 className='text-3xl mt-8'>${product_data.price}</h2>
+                        <AddedMessage product={pi.product_name_lookup[product_data.name]} />
+                    </div>
+                    <button onClick={() => handleAddToCart(pi.product_name_lookup[product_data.name])}
+                        className='add-btn mt-8 add-cart-btn'>Add to cart</button>
                     {/*for the rocket launcher*/}
                     {
                         product_data.item_number == 9 &&
@@ -69,6 +80,5 @@ const ProductPage = () => {
         </main>
     );
 };
-
 
 export default ProductPage;

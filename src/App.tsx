@@ -6,7 +6,7 @@ import { Link, Routes, Route } from 'react-router-dom';
 
 import Home from './Home';
 import Explore from './Sorting';
-import History from './History';
+import Account from './Account';
 import ProductPage from './ProductPage';
 import { CartContext } from './Context';
 //Want big night, synthy, future club vibes. Dark
@@ -69,8 +69,8 @@ const ReallyCoolScrollingText = () => {
         </li>
         <li >
           <button>
-            <Link to='/History'>
-              History
+            <Link to='/Account'>
+              Account
             </Link>
           </button>
         </li>
@@ -165,7 +165,7 @@ function App() {
         <source src='./assets/Neon Underground.wav' />
       </audio>
       <Routes>
-        <Route path='/History' element={<History />} />
+        <Route path='/Account' element={<Account />} />
         <Route path='/Cart' element={<CartElement />} />
         <Route path='/Checkout' element={<Checkout />} />
         <Route path='/SortItems' element={<Explore />} />

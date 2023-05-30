@@ -124,3 +124,7 @@ button:hover {
 .checkout {
     color: rgb(31, 81, 255);
 }
+
+.add-cart-btn:hover {
+    color: rgb(255, 16, 240)
+}
