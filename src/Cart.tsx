@@ -4,21 +4,28 @@ import { product_name_lookup } from "./ProductInfo";
 import { CartContext } from "./Context";
 import { images_sources, image_source_lookup } from "./ProductInfo";
 import { getPrice } from "./ProductInfo";
-//todo: add notif when you add to cart
+
 const CartElement = () => {
     const { cart, setCart } = useContext(CartContext);
-    //prevents listing the same item multiple times
     const unique_items = Array.from(new Set(cart));
+
     function handleRemoval(item: string) {
-        //adjust the cart to be everything but the deleted item
-        const new_cart = cart.filter((i) => i !== item);
-        setCart(new_cart);
+        let index = cart.indexOf(item);
+        if (index !== -1) {
+            const new_cart = [...cart];
+            new_cart.splice(index, 1);
+            setCart(new_cart);
+        }
     }
+
+    function handleAddition(item: string) {
+        setCart([...cart, item]);
+    }
+
     return (
         <main className=" w-2/5 justify-center m-auto">
             <h1 className="text-6xl checkout">Cart</h1>
             <hr></hr>
-            {/*line up to the left, in a column*/}
             <section className="flex flex-col">
                 <section className="flex">
                     {cart.length == 0 ?
@@ -41,12 +48,17 @@ const CartElement = () => {
                                         </div>
                                     </div>
                                     <button onClick={() => handleRemoval(item)}
-                                        className="remove-btn flex 
-                                    h-fit px-2 py-1 rounded-lg"
-                                        title="Remove from cart">
-                                        X
+                                        className="plus-minus-btn flex 
+                                    h-fit px-4 rounded-lg"
+                                        title="Subtract by one">
+                                        -
                                     </button>
-
+                                    <button onClick={() => handleAddition(item)}
+                                        className="plus-minus-btn flex 
+                                    h-fit px-4  rounded-lg"
+                                        title="Add one">
+                                        +
+                                    </button>
                                 </li>
                             ))}
                         </ul>
