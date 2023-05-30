@@ -4,7 +4,7 @@ import { product_name_lookup } from "./ProductInfo";
 import { CartContext, SubTotalContext } from "./Context";
 import { images_sources, image_source_lookup } from "./ProductInfo";
 import { getPrice } from "./ProductInfo";
-
+import { formatCurrency } from "./Checkout";
 const CartElement = () => {
     const { cart, setCart } = useContext(CartContext);
     const { total, setTotal } = useContext(SubTotalContext);
@@ -22,7 +22,7 @@ const CartElement = () => {
     function handleAddition(item: string) {
         setCart([...cart, item]);
     }
-
+    //this will need to be global
     useEffect(() => {
         setTotal(Number(cart.reduce(
             (acc, item) => acc + getPrice(item), 0).toFixed(2)))
@@ -50,7 +50,7 @@ const CartElement = () => {
                                         {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         <br></br>
                                         <div className="text-2xl">
-                                            {getPrice(item)}
+                                            {formatCurrency(getPrice(item))}
                                         </div>
                                     </div>
                                     <button onClick={() => handleRemoval(item)}
@@ -73,7 +73,7 @@ const CartElement = () => {
                 {cart.length !== 0 &&
 
                     <section className="text-white">
-                        Total: ${total}
+                        Total: {formatCurrency(total)}
 
                     </section>
                 }
