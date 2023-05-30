@@ -48,7 +48,7 @@ const ReallyCoolScrollingText = () => {
   }, []);
 
   return (
-    <div className='overflow-hidden w-2/3 mr-16 mt-2 flex flex-col items-center text-2xl'>
+    <div className='overflow-hidden w-full mr-16 mt-2 flex flex-col items-center text-2xl'>
       <p className="whitespace-nowrap px-4 animate-ad">
         {ad}
       </p>
@@ -64,13 +64,6 @@ const ReallyCoolScrollingText = () => {
           <button>
             <Link to='/Explore'>
               Explore
-            </Link>
-          </button>
-        </li>
-        <li >
-          <button>
-            <Link to='/Account'>
-              Account
             </Link>
           </button>
         </li>
@@ -165,7 +158,6 @@ function App() {
         <source src='./assets/Neon Underground.wav' />
       </audio>
       <Routes>
-        <Route path='/Account' element={<Account />} />
         <Route path='/Cart' element={<CartElement />} />
         <Route path='/Checkout' element={<Checkout />} />
         <Route path='/SortItems' element={<Explore />} />

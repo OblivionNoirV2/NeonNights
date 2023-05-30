@@ -41,7 +41,7 @@ const ProductPage = () => {
     const AddedMessage = (props: { product: string }) => {
         return (
             <div className={isMessageShown ?
-                'flex text-white text-2xl mt-8 ml-4 flash-msg' :
+                'flex text-white text-xl mt-8 ml-4 flash-msg' :
                 'hidden'}>
                 {props.product} added to cart
             </div>

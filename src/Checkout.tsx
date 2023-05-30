@@ -30,6 +30,16 @@ const ShippingAndPayment = () => {
         </section>
     )
 }
+
+const ConfirmButton = () => {
+    return (
+        <button onClick={() => alert("Order confirmed!")}
+            className="checkout-btn rounded-lg text-white  text-5xl
+        mt-4 px-4 py-4 ">
+            Confirm Order
+        </button>
+    )
+}
 //add $3 to shipping for each item
 const ItemsSummary = () => {
     const { total, setTotal } = useContext(SubTotalContext);
@@ -67,37 +77,43 @@ const Checkout = () => {
     const { cart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
     return (
-        <main className="w-3/5 checkout-page justify-center 
+        <div>
+            <main className="w-3/5 checkout-page justify-center 
         flex flex-row mx-auto text-white ">
-            <section className="flex flex-col">
-                <ShippingAndPayment />
-                <hr className="mt-4 w-2/3"></hr>
                 <section className="flex flex-col">
-                    {unique_items.map((item, index) => (
-                        <ol key={index}>
-                            <li className="flex flex-row ml-12">
+                    <ShippingAndPayment />
+                    <hr className="mt-4 w-2/3"></hr>
+                    <section className="flex flex-col">
+                        {unique_items.map((item, index) => (
+                            <ol key={index}>
+                                <li className="flex flex-row ml-12">
 
-                                <img src={image_source_lookup[item]}
-                                    className="w-2/12 h-2/12 my-4 ml-4">
-                                </img>
-                                <section className="flex-col ml-4 mt-8">
-                                    <div className="text-xl">
-                                        {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
-                                    </div>
-                                    <br></br>
-                                    <div className="text-lg">
-                                        ${(getPrice(item) * cart.filter((i) => i === item).length).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                                    </div>
-                                </section>
-                            </li>
-                        </ol>
-                    ))}
+                                    <img src={image_source_lookup[item]}
+                                        className="w-2/12 h-2/12 my-4 ml-4">
+                                    </img>
+                                    <section className="flex-col ml-4 mt-8">
+                                        <div className="text-xl">
+                                            {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
+                                        </div>
+                                        <br></br>
+                                        <div className="text-lg">
+                                            ${(getPrice(item) * cart.filter((i) => i === item).length).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                        </div>
+                                    </section>
+                                </li>
+                            </ol>
+                        ))}
+                    </section>
                 </section>
+                <section className="mr-36  mt-2 w-1/2">
+                    <ItemsSummary />
+                </section>
+            </main>
+            <section className="flex justify-center mx-auto">
+                <ConfirmButton />
             </section>
-            <section className="mr-36  mt-2 w-1/2">
-                <ItemsSummary />
-            </section>
-        </main>
+
+        </div>
     )
 }
 
