@@ -47,7 +47,7 @@ const ItemsSummary = () => {
     const { total, setTotal } = useContext(SubTotalContext);
     const { cart, setCart } = useContext(CartContext);
     return (
-        <section className="text-white">
+        <section className="text-white ml-4">
             <h1 className="text-4xl">Order Summary</h1>
             <hr></hr>
             <section className="flex flex-col text-xl mb-4">
@@ -79,13 +79,13 @@ const Checkout = () => {
     const { cart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
     return (
-        <div className="mt-8">
+        <div className="mt-8 mx-8 lg:mx-0 ">
             <main className="sm:w-full lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
-        flex flex-col sm:flex-row mx-auto text-white ">
+        flex flex-col sm:flex-row mx-auto text-white rounded-lg">
                 <section className="flex flex-col w-full lg:w-1/2">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
-                    <section className="flex flex-col">
+                    <section className="flex flex-col ">
                         {unique_items.map((item, index) => (
                             <ol key={index}>
                                 <li className="flex flex-row ml-12">
