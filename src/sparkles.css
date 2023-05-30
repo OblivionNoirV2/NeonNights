@@ -142,3 +142,7 @@ button:hover {
         opacity: 1;
     }
 }
+
+input {
+    color: black;
+}

@@ -46,6 +46,7 @@ const CartElement = () => {
                                         title="Remove from cart">
                                         X
                                     </button>
+
                                 </li>
                             ))}
                         </ul>
