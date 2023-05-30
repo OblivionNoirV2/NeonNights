@@ -47,13 +47,14 @@ const ProductPage = () => {
             </div>
         )
     }
-
+    //text, button will move below the image for mobile
     return (
-        <main className=" w-full ">
-            <section className='flex flex-row b mx-auto w-2/3 product-page
-            rounded-2xl'>
-                <section className='flex flex-col w-1/2 '>
-                    <h1 className='text-7xl ml-[2rem] '>{
+        <main className="mx-8 lg:mx-0 lg:w-full">
+            <section className='mt-8 flex flex-col lg:flex-row 
+  m-auto lg:w-2/3 product-page
+  rounded-2xl mb-4'>
+                <section className='flex flex-col w-full lg:w-1/2 sm:mx-16 '>
+                    <h1 className='text-5xl lg:text-7xl ml-4 lg:ml-[2rem]'>{
                         pi.product_name_lookup[product_data.name]
                     }</h1>
                     {
@@ -62,24 +63,25 @@ const ProductPage = () => {
                             className='rounded-2xl prod-image' />
                     }
                 </section>
-                <section className='flex flex-col w-1/2 ml-8 mr-8 mt-48'>
-                    <p className='text-3xl leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
+                <section className='flex flex-col w-full lg:w-2/3 mx-4 lg:mx-8 mt-8 lg:mt-48'>
+                    <p className='text-xl mx-4 lg:mx-0 lg:text-3xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
                     <div className='flex'>
-                        <h2 className='text-3xl mt-8'>${product_data.price}</h2>
+                        <h2 className='text-3xl mt-8 ml-4 lg:ml-0'>${product_data.price}</h2>
                         <AddedMessage product={pi.product_name_lookup[product_data.name]} />
                     </div>
                     <button onClick={() => handleAddToCart(pi.product_name_lookup[product_data.name])}
-                        className='add-btn mt-8 add-cart-btn'>Add to cart</button>
+                        className='add-btn w-2/3 ml-4 lg:w-full lg:mx-auto mt-8 add-cart-btn mb-8 lg:mb-0'>Add to cart</button>
                     {/*for the rocket launcher*/}
                     {
                         product_data.item_number == 9 &&
-                        <div className='text-xs flex justify-end mt-80'>
+                        <div className='text-xs flex justify-center lg:justify-end mt-80'>
                             *probably illegal but we'll sell it to you anyway
                         </div>
                     }
                 </section>
             </section>
         </main>
+
     );
 };
 
