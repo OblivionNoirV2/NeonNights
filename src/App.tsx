@@ -48,7 +48,8 @@ const ReallyCoolScrollingText = () => {
   }, []);
 
   return (
-    <div className='overflow-hidden w-full mr-16 mt-2 flex flex-col items-center text-2xl'>
+    <div className='overflow-hidden w-full mr-16 mt-2 flex flex-col
+     items-center lg:text-2xl sm:text-lg'>
       <p className="whitespace-nowrap px-4 animate-ad">
         {ad}
       </p>
@@ -74,7 +75,7 @@ const ReallyCoolScrollingText = () => {
 
 const SiteLogo = () => {
   return (
-    <section className='w-1/12 h-1/12'>
+    <section className=''>
       <Link to='/'>
         <img src={require("./assets/NNlogo.png")} alt="logo"
           className="h-full w-auto flex " />
@@ -87,19 +88,19 @@ showing how many items are in the cart(number of strings in the array)*/
 const CartIcon = () => {
   const { cart } = useContext(CartContext);
 
-  console.log("cart length: " + cart.length)
   return (
-    <div className='relative w-1/12 -mr-16'>
-      <div className='absolute top-1/2 left-1/3 text-lg text-white '>
+    <div className='ml-auto relative mr-4'>
+      <div className='absolute top-16 right-10 text-lg text-white '>
         {cart.length}
       </div>
       <Link to='/Cart'>
         <img src={require("./assets/cart.png")} alt="cart"
-          className="h-full w-auto flex" />
+          className="h-full w-auto ml-auto" />
       </Link>
     </div>
-  )
+  );
 };
+
 
 
 
