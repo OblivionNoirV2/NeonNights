@@ -47,7 +47,7 @@ const CartElement = () => {
                                             className="w-full">
                                         </img>
                                     </div>
-                                    <div className="flex flex-col justify-around
+                                    <section className="flex flex-col justify-around
                                      col-content ml-4 w-1/5 lg:w-1/3">
                                         {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         <div className="text-2xl">
@@ -70,7 +70,7 @@ h-fit px-2 rounded-lg"
                                             </div>
                                         </div>
 
-                                    </div>
+                                    </section>
                                 </li>
                             ))}
                         </ul>

@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { SubTotalContext, CartContext } from "./Context";
 import { images_sources, image_source_lookup, product_name_lookup, getPrice } from "./ProductInfo";
 import CartElement from "./Cart";
+
+
 //goes on the right
 export function formatCurrency(num: number) {
     return "$" + num.toLocaleString('en-US', {
@@ -77,10 +79,10 @@ const Checkout = () => {
     const { cart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
     return (
-        <div>
-            <main className="w-3/5 checkout-page justify-center 
-        flex flex-row mx-auto text-white ">
-                <section className="flex flex-col">
+        <div className="mt-8">
+            <main className="sm:w-full lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
+        flex flex-col sm:flex-row mx-auto text-white ">
+                <section className="flex flex-col w-full lg:w-1/2">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
                     <section className="flex flex-col">
@@ -105,7 +107,7 @@ const Checkout = () => {
                         ))}
                     </section>
                 </section>
-                <section className="mr-36  mt-2 w-1/2">
+                <section className="w-full lg:w-1/2 mt-4 lg:mt-2 lg:mr-36">
                     <ItemsSummary />
                 </section>
             </main>
@@ -116,5 +118,6 @@ const Checkout = () => {
         </div>
     )
 }
+
 
 export default Checkout;
