@@ -22,7 +22,7 @@ const CartElement = () => {
     function handleAddition(item: string) {
         setCart([...cart, item]);
     }
-    //this will need to be global
+
     useEffect(() => {
         setTotal(Number(cart.reduce(
             (acc, item) => acc + getPrice(item), 0).toFixed(2)))
@@ -39,7 +39,7 @@ const CartElement = () => {
                             Your cart is empty
                         </div>
                         ://make two different uls, for the images and the other stuff
-                        <ul className="flex flex-col ml-4 text-3xl">
+                        <ul className="flex flex-col ml-4 text-xl lg:text-2xl">
                             {unique_items.map((item, index) => (
                                 <li key={index} className="grid grid-cols-cartItem my-8 text-white">
                                     <div className="col-img">
@@ -48,12 +48,12 @@ const CartElement = () => {
                                         </img>
                                     </div>
                                     <section className="flex flex-col justify-around
-                                     col-content ml-4 w-1/5 lg:w-1/3">
+                                     col-content ml-4 w-1/5 lg:w-1/3 ">
                                         {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
-                                        <div className="text-2xl">
+                                        <section>
                                             {formatCurrency(getPrice(item))}
-                                        </div>
-                                        <div className="flex justify-between items-center">
+                                        </section>
+                                        <section className="flex justify-between items-center">
                                             <div className="button-group">
                                                 <button onClick={() => handleRemoval(item)}
                                                     className="plus-minus-btn flex 
@@ -68,7 +68,7 @@ h-fit px-2 rounded-lg"
                                                     +
                                                 </button>
                                             </div>
-                                        </div>
+                                        </section>
 
                                     </section>
                                 </li>
