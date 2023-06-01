@@ -3,10 +3,23 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as pi from './ProductInfo';
 import { images_sources } from './ProductInfo';
-
+const SortSelection = () => {
+    return (
+        <section className=''>
+            <select className='bg-black sort-select ml-16'>
+                <option value="" disabled selected>Sort by...</option>
+                <option value="price-lth">Price: Low to high</option>
+                <option value="price-htl">Price: High to low</option>
+                <option value="popularity">Popularity</option>
+                <option value="default">Default</option>
+            </select>
+        </section>
+    )
+}
 const Home = () => {
     return (
         <main className='neon-text'>
+            <SortSelection />
             <ImagesGrid images={images_sources} />
         </main>
     )

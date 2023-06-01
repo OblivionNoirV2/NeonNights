@@ -188,3 +188,7 @@ input {
     justify-content: space-between;
     width: 2rem;
 }
+
+.sort-select {
+    border: .1rem solid rgb(31, 81, 255)
+}
