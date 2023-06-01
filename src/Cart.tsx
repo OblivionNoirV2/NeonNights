@@ -30,7 +30,7 @@ const CartElement = () => {
     }, [cart])
 
     return (
-        <main className=" w-3/5 ml-16 justify-center lg:ml-auto m-auto">
+        <main className=" w-3/5 ml-4 justify-start mr-auto lg:justify-center  lg:ml-auto">
             <h1 className="text-6xl checkout">Cart</h1>
             <hr></hr>
             <section className="flex flex-col">
@@ -45,12 +45,12 @@ const CartElement = () => {
                                 <li key={index} className="grid grid-cols-cartItem my-8 text-white">
                                     <div className="col-img">
                                         <img src={image_source_lookup[item]}
-                                            className="w-full h-auto object-cover"
+                                            className=" w-3/5 h-auto object-cover -ml-4 lg:-ml-0"
                                             alt={product_name_lookup[item]}>
                                         </img>
                                     </div>
                                     <section className="flex flex-col justify-around
-                                     col-content ml-4 text-sm lg:text-xl w-1/6 lg:w-1/3 ">
+                                     col-content -ml-12 lg:ml-4 text-sm lg:text-xl w-1/6 lg:w-1/3 ">
                                         {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         <section>
                                             {formatCurrency(getPrice(item))}
