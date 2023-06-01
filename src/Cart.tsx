@@ -50,7 +50,7 @@ const CartElement = () => {
                                         </img>
                                     </div>
                                     <section className="flex flex-col justify-around
-                                     col-content ml-4 w-1/5 lg:w-1/3 ">
+                                     col-content ml-4 text-sm lg:text-xl w-1/6 lg:w-1/3 ">
                                         {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         <section>
                                             {formatCurrency(getPrice(item))}
