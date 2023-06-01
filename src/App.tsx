@@ -112,7 +112,7 @@ const CartIcon = () => {
       </div>
       <Link to='/Cart'>
         <img src={require("./assets/cart.png")} alt="cart"
-          className="lg:w-[6vmax] w-[8vmax]" />
+          className="lg:w-[6vmax] w-[9vmax]" />
       </Link>
     </div>
   );
@@ -180,9 +180,9 @@ const VolButton: React.FC = () => {
   }
 
   return (
-    <div className='sticky top-[9rem] text-xs lg:text-lg z-10 w-full flex justify-end'>
+    <div className='sticky top-[9rem] text-xs lg:text-lg w-full flex justify-end'>
       <button onClick={toggleThemeSong}
-        className='text-white mr-4 py-2 px-4 rounded-lg '>
+        className='text-white mr-4 w-48 py-2 px-4 rounded-lg '>
         {isThemeSongOn ?
           'Pause Theme Song' : 'Play Theme Song'}
       </button>
