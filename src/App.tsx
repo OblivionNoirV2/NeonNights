@@ -58,32 +58,38 @@ const ReallyCoolScrollingText = () => {
 
 
       <ul className='flex flex-row text-[3vmin] mt-2 middle-ul z-10 space-x-8'>
-        <ButtonsLi is_mobile={false} />
+        <NameLi is_mobile={false} />
       </ul>
     </div>
   );
 };
-interface ButtonsLiProps {
+interface NameLiProps {
   is_mobile: boolean;
 }
 //different classes for mobile/desktop
-const ButtonsLi: React.FC<ButtonsLiProps> = ({ is_mobile }) => {
+const NameLi: React.FC<NameLiProps> = ({ is_mobile }) => {
   return (
     <>
+
       <li>
-        <button className={is_mobile ? 'ml-4 px-4 py-2 text-3xl rounded-lg' : ''}>
-          <Link to='/'>
-            Home
-          </Link>
-        </button>
+        <i>
+          <div className={is_mobile ? 'ml-4 -mt-2 mb-4 px-4 py-2 text-4xl rounded-lg' : 'pt-1 text-5xl'}>
+            <Link to='/'>
+              Neon
+            </Link>
+          </div>
+        </i>
       </li>
       <li >
-        <button className={is_mobile ? 'px-4 py-2 text-3xl rounded-lg' : ''}>
-          <Link to='/Account'>
-            Account
-          </Link>
-        </button>
+        <i>
+          <div className={is_mobile ? 'py-2 -ml-4 mt-2 text-4xl rounded-lg' : 'pt-5 text-5xl'}>
+            <Link to='/'>
+              Nights
+            </Link>
+          </div>
+        </i>
       </li>
+
     </>
   )
 }
@@ -140,7 +146,7 @@ const Navbar = () => {
         {is_mobile ?
           <section className='flex flex-row top-btn'>
             <ul className='flex flex-row space-x-8 text-2xl mt-10'>
-              <ButtonsLi is_mobile={true} />
+              <NameLi is_mobile={true} />
             </ul>
             <CartIcon />
           </section>
