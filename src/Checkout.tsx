@@ -83,17 +83,17 @@ const Checkout = () => {
                 <section className="flex flex-col w-full lg:w-1/2">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
-                    <section className="flex flex-col ">
+                    <section className="flex flex-col mr-16 ">
                         {unique_items.map((item, index) => (
                             <ol key={index}>
-                                <li className="flex flex-row ml-12">
+                                <li className="flex flex-row ml-12 w-full">
 
                                     <img src={image_source_lookup[item]}
-                                        className="w-1/2 my-4 ml-4"
+                                        className=" my-4 w-2/3 lg:w-1/2 h-auto"
                                         alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col ml-4 mt-8">
-                                        <div className="text-xl">
+                                        <div className="text-md lg:text-xl">
                                             {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         </div>
                                         <br></br>
