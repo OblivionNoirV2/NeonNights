@@ -89,7 +89,7 @@ const Checkout = () => {
                                 <li className="flex flex-row ml-12">
 
                                     <img src={image_source_lookup[item]}
-                                        className="w-full my-4 ml-4"
+                                        className="w-1/2 my-4 ml-4"
                                         alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col ml-4 mt-8">
@@ -110,7 +110,7 @@ const Checkout = () => {
                     <ItemsSummary />
                 </section>
             </main>
-            <section className="flex justify-center mx-auto">
+            <section className="flex justify-center mx-auto mb-16">
                 <ConfirmButton />
             </section>
         </div>
