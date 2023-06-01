@@ -61,12 +61,12 @@ const ProductPage = () => {
                     {
                         product_image &&
                         <img src={product_image}
-                            className='rounded-2xl prod-image'
+                            className='rounded-2xl prod-image w-1/2'
                             alt={pi.product_name_lookup[product_data.name]} />
                     }
                 </section>
                 <section className='flex flex-col w-full lg:w-2/3 mx-4 lg:mx-8 mt-8 lg:mt-48'>
-                    <p className='text-lg mx-4 lg:mx-0 lg:text-3xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
+                    <p className='text-md mx-4 lg:mx-0 lg:text-3xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
                     <div className='flex'>
                         <h2 className='text-xl lg:text-3xl mt-8 ml-4 lg:ml-0'>${product_data.price}</h2>
                         <AddedMessage product={pi.product_name_lookup[product_data.name]} />
