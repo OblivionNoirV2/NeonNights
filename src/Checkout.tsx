@@ -92,7 +92,7 @@ const Checkout = () => {
 
                                     <img src={image_source_lookup[item]}
                                         className=" my-4
-                         w-1/2  lg:w-1/4 h-auto mr-64"
+                         w-1/2  lg:w-1/4 h-auto mr-64 lg:mr-4"
                                         alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col mt-4 sm:mt-0 w-full sm:w-2/3 lg:w-3/4">
