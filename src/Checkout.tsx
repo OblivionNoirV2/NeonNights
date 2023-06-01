@@ -1,8 +1,7 @@
 //this one holds the actual shipping/payment/tax/all that 
 import { useContext } from "react";
 import { SubTotalContext, CartContext } from "./Context";
-import { images_sources, image_source_lookup, product_name_lookup, getPrice } from "./ProductInfo";
-import CartElement from "./Cart";
+import { image_source_lookup, product_name_lookup, getPrice } from "./ProductInfo";
 
 
 //goes on the right
@@ -44,8 +43,8 @@ const ConfirmButton = () => {
 }
 //add $3 to shipping for each item
 const ItemsSummary = () => {
-    const { total, setTotal } = useContext(SubTotalContext);
-    const { cart, setCart } = useContext(CartContext);
+    const { total } = useContext(SubTotalContext);
+    const { cart } = useContext(CartContext);
     return (
         <section className="text-white ml-4">
             <h1 className="text-4xl">Order Summary</h1>
@@ -75,7 +74,6 @@ const ItemsSummary = () => {
 }
 //row with 2 cols
 const Checkout = () => {
-    const { total, setTotal } = useContext(SubTotalContext);
     const { cart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
     return (
@@ -91,7 +89,8 @@ const Checkout = () => {
                                 <li className="flex flex-row ml-12">
 
                                     <img src={image_source_lookup[item]}
-                                        className="w-full my-4 ml-4">
+                                        className="w-full my-4 ml-4"
+                                        alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col ml-4 mt-8">
                                         <div className="text-xl">
@@ -114,7 +113,6 @@ const Checkout = () => {
             <section className="flex justify-center mx-auto">
                 <ConfirmButton />
             </section>
-
         </div>
     )
 }

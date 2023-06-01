@@ -51,6 +51,7 @@ interface ProductInfoProps {
     popularity: number;
 }
 //price/item number/popularity
+//changing the select menu will reorganize this
 export const product_info: { [name: string]: ProductInfoProps } = {
     "ai": {
         price: 99999.99,

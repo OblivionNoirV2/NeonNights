@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import * as pi from './ProductInfo';
-import { images_sources, image_source_lookup } from './ProductInfo';
+import { images_sources } from './ProductInfo';
 import { CartContext } from './Context';
 
 interface ProductInfoProps {
@@ -61,7 +61,8 @@ const ProductPage = () => {
                     {
                         product_image &&
                         <img src={product_image}
-                            className='rounded-2xl prod-image' />
+                            className='rounded-2xl prod-image'
+                            alt={pi.product_name_lookup[product_data.name]} />
                     }
                 </section>
                 <section className='flex flex-col w-full lg:w-2/3 mx-4 lg:mx-8 mt-8 lg:mt-48'>
@@ -74,7 +75,7 @@ const ProductPage = () => {
                         className='add-btn w-2/3 ml-4 lg:w-full lg:mx-auto mt-8 add-cart-btn mb-8 lg:mb-0'>Add to cart</button>
                     {/*for the rocket launcher*/}
                     {
-                        product_data.item_number == 9 &&
+                        product_data.item_number === 9 &&
                         <div className='text-xs flex justify-center lg:justify-end mt-80'>
                             *probably illegal but we'll sell it to you anyway
                         </div>

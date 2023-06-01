@@ -38,4 +38,3 @@ export function SubTotalContextProvider({ children }: { children: React.ReactEle
         </SubTotalContext.Provider>
     )
 }
-export default {}

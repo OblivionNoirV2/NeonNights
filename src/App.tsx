@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import { useState, useRef, useEffect, useContext } from 'react';
 import './Sparkles.css';
 import { Link, Routes, Route } from 'react-router-dom';
 
 import Home from './Home';
 
-import Account from './Account';
 import ProductPage from './ProductPage';
 import { CartContext } from './Context';
 //Want big night, synthy, future club vibes. Dark
 import ne from './assets/Neon Underground.wav';
 import CartElement from './Cart';
 import Checkout from './Checkout';
-//do a cool gradient thing 
+
 //clicking on logo will act as home button
 
 
 //the billboard rotates every so often
-//text courtesy of gpt4
 const scroll_advertisements_dict: { [key: number]: string } = {
   0: 'Experience Life 2.0 with VirtuReal™: Bored of your humdrum existence? Experience life like never before in our immersive digital utopia. VirtuReal™ brings you the future of entertainment. Dive into a world of infinite possibilities, where reality is what you make it. With VirtuReal™, you are the architect of your own universe. Experience a vast array of digital landscapes, engage in extraordinary activities, and make unforgettable memories. Start your adventure today! VirtuReal™ - Your alternate reality awaits!',
   1: "Stay Ahead with Neurolink's Brain Enhancement Chips: Are you always a step behind? Can't keep up with the information age? Upgrade your mind with Neurolink's revolutionary brain enhancement chips. Boost memory, speed up learning, and access the net directly with your thoughts. Don't just survive the future - master it. Imagine a world where complex calculations take no more time than a thought, where every language is at your fingertips, where you can explore the depths of the digital universe with just a thought. Upgrade yourself with Neurolink and stay ahead.",
@@ -34,7 +31,6 @@ const ReallyCoolScrollingText = () => {
   }
 
   useEffect(() => {
-    console.log("useEffect called");
     //Set initial advertisement
     setAd(scroll_advertisements_dict[getRandomInt()]);
 
@@ -49,10 +45,10 @@ const ReallyCoolScrollingText = () => {
 
   return (
 
-    <div className='overflow-hidden w-full mr-12 mt-2 flex flex-col
+    <div className='overflow-hidden w-full mr-[10rem] mt-2 flex flex-col
      items-center text-2xl'>
 
-      <p className="whitespace-nowrap px-4 animate-ad">
+      <p className="whitespace-nowrap px-4 animate-ad ">
         {ad}
       </p>
 
@@ -99,7 +95,7 @@ const SiteLogo = () => {
     <section className=''>
       <Link to='/'>
         <img src={require("./assets/NNlogo.png")} alt="logo"
-          className="h-full w-auto flex " />
+          className=" w-[6vw] flex " />
       </Link>
     </section>
   )
@@ -110,13 +106,13 @@ const CartIcon = () => {
   const { cart } = useContext(CartContext);
 
   return (
-    <div className='ml-auto relative'>
-      <div className='absolute top-16 right-10 text-lg text-white '>
+    <div className='absolute right-0 mr-2 -top-4 mt-2'>
+      <div className='absolute text-lg top-[40%] lg:top-[50%] right-[30%] text-white'>
         {cart.length}
       </div>
       <Link to='/Cart'>
         <img src={require("./assets/cart.png")} alt="cart"
-          className="h-full w-auto ml-auto" />
+          className="w-[6vmax]" />
       </Link>
     </div>
   );
@@ -125,12 +121,13 @@ const CartIcon = () => {
 
 
 
+
 const Navbar = () => {
-  const [is_mobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isAdShown, setIsAdShown] = useState(window.innerWidth < 1100);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsAdShown(window.innerWidth < 1100);
     };
 
     window.addEventListener('resize', handleResize);
@@ -143,7 +140,7 @@ const Navbar = () => {
     <section className='sticky top-0'>
       <nav className='main-nav bg-black neon-text w-full 
       h-32 flex '>
-        {is_mobile ?
+        {isAdShown ?
           <section className='flex flex-row top-btn'>
             <ul className='flex flex-row space-x-8 text-2xl mt-10'>
               <NameLi is_mobile={true} />
@@ -172,7 +169,6 @@ const VolButton: React.FC = () => {
   NE.current.loop = true;
 
   function toggleThemeSong() {
-    console.log("toggleThemeSong called");
     if (isThemeSongOn) {
       NE.current.pause();
       setIsThemeSongOn(false);
@@ -206,7 +202,7 @@ function App() {
       <Routes>
         <Route path='/Cart' element={<CartElement />} />
         <Route path='/Checkout' element={<Checkout />} />
-        <Route path='/Account' element={<Account />} />
+
         <Route path='/Product/:itemnumber' element={<ProductPage />} />
         <Route path='/' element={<Home />} />
       </Routes>

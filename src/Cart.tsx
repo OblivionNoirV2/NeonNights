@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { product_name_lookup } from "./ProductInfo";
 import { CartContext, SubTotalContext } from "./Context";
-import { images_sources, image_source_lookup } from "./ProductInfo";
+import { image_source_lookup } from "./ProductInfo";
 import { getPrice } from "./ProductInfo";
 import { formatCurrency } from "./Checkout";
 const CartElement = () => {
@@ -26,6 +26,7 @@ const CartElement = () => {
     useEffect(() => {
         setTotal(Number(cart.reduce(
             (acc, item) => acc + getPrice(item), 0).toFixed(2)))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [cart])
 
     return (
@@ -34,7 +35,7 @@ const CartElement = () => {
             <hr></hr>
             <section className="flex flex-col">
                 <section className="flex">
-                    {cart.length == 0 ?
+                    {cart.length === 0 ?
                         <div className="flex text-4xl py-8 text-white">
                             Your cart is empty
                         </div>
@@ -44,7 +45,8 @@ const CartElement = () => {
                                 <li key={index} className="grid grid-cols-cartItem my-8 text-white">
                                     <div className="col-img">
                                         <img src={image_source_lookup[item]}
-                                            className="w-full h-auto object-cover">
+                                            className="w-full h-auto object-cover"
+                                            alt={product_name_lookup[item]}>
                                         </img>
                                     </div>
                                     <section className="flex flex-col justify-around
