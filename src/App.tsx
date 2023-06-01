@@ -182,7 +182,8 @@ const VolButton: React.FC = () => {
   return (
     <div className='sticky top-[9rem] text-xs ml-4 lg:text-lg w-full flex justify-end'>
       <button onClick={toggleThemeSong}
-        className='text-white mr-6 lg:mr-8 w-24 lg:w-56 py-1 px-0.5 lg:py-1 rounded-lg '>
+        className='text-white mr-8  w-24 
+        lg:w-56 py-1 px-0.5 lg:py-1 rounded-bl-lg rounded-tl-lg lg:rounded-lg '>
         {isThemeSongOn ?
           'Pause Theme Song' : 'Play Theme Song'}
       </button>

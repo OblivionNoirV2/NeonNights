@@ -14,7 +14,7 @@ const SortSelection: React.FC<SortSelectionProps> = ({ setSortType }) => {
     };
 
     return (
-        <select className='bg-black sort-select ml-16'
+        <select className='bg-black sort-select ml-16 w-36 lg:w-fit'
             onChange={handleSortSelection} defaultValue="">
             <option value="" disabled>Sort by...</option>
             <option value="price-lth">Price: Low to high</option>
