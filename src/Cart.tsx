@@ -88,7 +88,7 @@ h-fit px-2 rounded-lg"
                 <Link to="/checkout">
                     <button
                         className="text-white flex justify-center mx-auto 
-                        text-3xl px-6 py-4 mt-4 rounded-xl checkout-btn">
+                        text-3xl px-6 py-4 mt-4 mb-4 lg:mb-0 rounded-xl checkout-btn">
                         Checkout
                     </button>
                 </Link>
