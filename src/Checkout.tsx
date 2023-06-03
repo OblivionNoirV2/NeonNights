@@ -106,7 +106,7 @@ const Checkout = () => {
             <main className="w-11/12 lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
 
-                <section className="flex flex-col w-full lg:w-1/2">
+                <section className="flex flex-col w-full lg:w-1/2 ">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
                     <section className="flex flex-col  ">
@@ -115,16 +115,17 @@ const Checkout = () => {
                                 <li className="flex flex-col sm:flex-row ml-12 w-full items-center">
 
                                     <img src={image_source_lookup[item]}
-                                        className=" my-4
-                         w-1/4 h-auto mr-64 lg:mr-4"
+                                        className="my-4
+                         w-1/4 sm:w-full h-auto mr-64  lg:mr-4"
                                         alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col mt-4 sm:mt-0 w-full sm:w-2/3 lg:w-3/4">
-                                        <div className="text-md lg:text-xl w-1/2 mr-4">
+                                        <div className="text-md 
+                                        lg:text-xl w-1/2 sm:-ml-56 lg:-ml-0 mr-4">
                                             {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         </div>
                                         <br></br>
-                                        <div className="text-lg">
+                                        <div className="text-lg sm:-ml-56 lg:-ml-0">
                                             {formatCurrency(toPennies(getPrice(item)) * cart.filter((i) => i === item).length)}
                                         </div>
                                     </section>
@@ -134,7 +135,8 @@ const Checkout = () => {
                     </section>
                 </section>
 
-                <section className="w-full lg:w-1/2 mt-4 lg:mt-2 lg:mr-36">
+                <section className="w-full md:w-1/3 
+                lg:w-1/2 mt-4 lg:mt-2 lg:mr-36">
                     <ItemsSummary />
                 </section>
             </main>
