@@ -103,6 +103,7 @@ const Checkout = () => {
         <div className="mt-24 mx-8 lg:mx-0  ">
             <main className="sm:w-full lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
+
                 <section className="flex flex-col w-full lg:w-1/2">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
