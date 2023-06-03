@@ -124,6 +124,7 @@ button:not(.checkout-btn):hover {
 .prod-image {
     box-shadow: 0 0 .5rem rgba(255, 255, 255, 1);
     margin: 2rem 2rem 2rem 2rem;
+
 }
 
 .add-btn {

@@ -4,9 +4,18 @@ import { SubTotalContext, CartContext } from "./Context";
 import { image_source_lookup, product_name_lookup, getPrice } from "./ProductInfo";
 
 
-//goes on the right
-export function formatCurrency(num: number) {
-    return "$" + num.toLocaleString('en-US', {
+
+function toPennies(amount: number) {
+    return Math.round(amount * 100);
+}
+
+//Convert pennies back to dollars for display
+function fromPennies(amount: number) {
+    return amount / 100;
+}
+//Display in correct currency format
+export function formatCurrency(amountInPennies: number) {
+    return "$" + fromPennies(amountInPennies).toLocaleString('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     }) + " ";
@@ -45,6 +54,12 @@ const ConfirmButton = () => {
 const ItemsSummary = () => {
     const { total } = useContext(SubTotalContext);
     const { cart } = useContext(CartContext);
+    const totalPennies = toPennies(total);
+    const shippingPennies = toPennies(cart.length * 3);
+    const preTaxTotal = totalPennies + shippingPennies;
+    const estimatedTax = Math.round(preTaxTotal * 0.07);
+    const orderTotal = preTaxTotal + estimatedTax;
+
     return (
         <section className="text-white ml-4">
             <h1 className="text-4xl">Order Summary</h1>
@@ -52,20 +67,20 @@ const ItemsSummary = () => {
             <section className="flex flex-col text-xl mb-4">
                 <ul>
                     <li className="my-6">
-                        Items ({cart.length}): {formatCurrency(total)}
+                        Items ({cart.length}): {formatCurrency(totalPennies)}
                     </li>
                     <li className="my-6">
-                        Shipping: {formatCurrency(cart.length * 3)}
+                        Shipping: {formatCurrency(shippingPennies)}
                     </li>
                     <li className="my-6">
-                        Total before tax: {formatCurrency(total + cart.length * 3)}
+                        Total before tax: {formatCurrency(preTaxTotal)}
                     </li>
                     <li className="my-6">
-                        Estimated tax: {formatCurrency((total + cart.length * 3) * 0.07)}
+                        Estimated tax: {formatCurrency(estimatedTax)}
                     </li>
                     <hr className="w-4/5"></hr>
                     <li className="text-3xl">
-                        Order total: {formatCurrency((total + cart.length * 3) * 1.07)}
+                        Order total: {formatCurrency(orderTotal)}
                     </li>
                 </ul>
             </section>
