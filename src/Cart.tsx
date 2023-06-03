@@ -77,10 +77,6 @@ h-fit px-2 rounded-lg"
                                 </li>
                             ))}
 
-// ...
-
-
-
                         </ul>
 
                     }
