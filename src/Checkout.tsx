@@ -22,7 +22,7 @@ export function formatCurrency(amountInPennies: number) {
 }
 const ShippingAndPayment = () => {
     return (
-        <section className="flex flex-col text-white ml-16 mt-4">
+        <section className="flex flex-col text-white ml-16 mt-4 mr-4">
             <div className="flex flex-row">
                 <h1>Shipping Address</h1>
                 <ul className="ml-8">
@@ -64,9 +64,10 @@ const ItemsSummary = () => {
         <section className="text-white ml-4">
             {cart.length !== 0 ?
                 <>
-                    <h1 className="text-4xl">Order Summary</h1>
+                    <h1 className="text-2xl lg:text-4xl">Order Summary</h1>
                     <hr></hr>
-                    <section className="flex flex-col text-xl mb-4">
+                    <section className="flex flex-col text-md lg:text-xl
+                     mb-4">
                         <ul>
                             <li className="my-6">
                                 Items ({cart.length}): {formatCurrency(total_pennies)}
@@ -81,7 +82,7 @@ const ItemsSummary = () => {
                                 Estimated tax: {formatCurrency(estimated_tax)}
                             </li>
                             <hr className="w-4/5"></hr>
-                            <li className="text-3xl">
+                            <li className="text-2xl lg:text-4xl">
                                 Order total: {formatCurrency(order_total)}
                             </li>
                         </ul>
@@ -114,7 +115,7 @@ const Checkout = () => {
 
                                     <img src={image_source_lookup[item]}
                                         className=" my-4
-                         w-1/2  lg:w-1/4 h-auto mr-64 lg:mr-4"
+                         w-1/4 h-auto mr-64 lg:mr-4"
                                         alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col mt-4 sm:mt-0 w-full sm:w-2/3 lg:w-3/4">
@@ -137,8 +138,8 @@ const Checkout = () => {
                 </section>
             </main>
             {cart.length !== 0 &&
-                <section className="flex lg:justify-center 
-                mt-4 lg:mx-auto mb-12 ml-10 lg:ml-0 text-4xl lg:text-5xl">
+                <section className="flex justify-center 
+                mt-4 mx-auto mb-12  text-3xl lg:text-5xl">
                     <ConfirmButton />
                 </section>
             }
