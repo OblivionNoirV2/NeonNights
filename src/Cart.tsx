@@ -4,7 +4,7 @@ import { product_name_lookup } from "./ProductInfo";
 import { CartContext, SubTotalContext } from "./Context";
 import { image_source_lookup } from "./ProductInfo";
 import { getPrice } from "./ProductInfo";
-import { formatCurrency } from "./Checkout";
+import { formatCurrency, toPennies } from "./Checkout";
 const CartElement = () => {
     const { cart, setCart } = useContext(CartContext);
     const { total, setTotal } = useContext(SubTotalContext);
@@ -41,6 +41,7 @@ const CartElement = () => {
                         </div>
                         ://make two different uls, for the images and the other stuff
                         <ul className="flex flex-col ml-4 text-xl lg:text-2xl">
+
                             {unique_items.map((item, index) => (
                                 <li key={index} className="grid grid-cols-cartItem my-8 text-white">
                                     <div className="col-img">
@@ -50,10 +51,10 @@ const CartElement = () => {
                                         </img>
                                     </div>
                                     <section className="flex flex-col justify-around
-                                     col-content -ml-12 lg:ml-4 text-sm lg:text-xl w-1/6 lg:w-1/3 ">
+         col-content -ml-12 lg:ml-4 text-sm lg:text-xl w-1/6 lg:w-1/3 ">
                                         {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         <section>
-                                            {formatCurrency(getPrice(item))}
+                                            {formatCurrency(toPennies(getPrice(item)) * cart.filter((i) => i === item).length)}
                                         </section>
                                         <section className="flex justify-between items-center">
                                             <div className="button-group">
@@ -75,13 +76,18 @@ h-fit px-2 rounded-lg"
                                     </section>
                                 </li>
                             ))}
+
+// ...
+
+
+
                         </ul>
 
                     }
                 </section>
                 {cart.length !== 0 &&
                     <section className="text-white">
-                        Total: {formatCurrency(total)}
+                        Total: {formatCurrency(toPennies(total))}
                     </section>
                 }
             </section>

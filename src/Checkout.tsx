@@ -5,12 +5,12 @@ import { image_source_lookup, product_name_lookup, getPrice } from "./ProductInf
 
 
 
-function toPennies(amount: number) {
+export function toPennies(amount: number) {
     return Math.round(amount * 100);
 }
 
 //Convert pennies back to dollars for display
-function fromPennies(amount: number) {
+export function fromPennies(amount: number) {
     return amount / 100;
 }
 //Display in correct currency format
@@ -54,11 +54,11 @@ const ConfirmButton = () => {
 const ItemsSummary = () => {
     const { total } = useContext(SubTotalContext);
     const { cart } = useContext(CartContext);
-    const totalPennies = toPennies(total);
-    const shipping_pennies = toPennies(cart.length * 3);
-    const pre_tax_total = totalPennies + shipping_pennies;
+    const total_pennies = toPennies(total);
+    const shipping_pennies = toPennies(total * .005);
+    const pre_tax_total = total_pennies + shipping_pennies;
     const estimated_tax = Math.round(pre_tax_total * 0.07);
-    const orderTotal = pre_tax_total + estimated_tax;
+    const order_total = pre_tax_total + estimated_tax;
 
     return (
         <section className="text-white ml-4">
@@ -67,7 +67,7 @@ const ItemsSummary = () => {
             <section className="flex flex-col text-xl mb-4">
                 <ul>
                     <li className="my-6">
-                        Items ({cart.length}): {formatCurrency(totalPennies)}
+                        Items ({cart.length}): {formatCurrency(total_pennies)}
                     </li>
                     <li className="my-6">
                         Shipping: {formatCurrency(shipping_pennies)}
@@ -80,7 +80,7 @@ const ItemsSummary = () => {
                     </li>
                     <hr className="w-4/5"></hr>
                     <li className="text-3xl">
-                        Order total: {formatCurrency(orderTotal)}
+                        Order total: {formatCurrency(order_total)}
                     </li>
                 </ul>
             </section>
@@ -95,7 +95,6 @@ const Checkout = () => {
         <div className="mt-8 mx-8 lg:mx-0 ">
             <main className="sm:w-full lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
-
 
                 <section className="flex flex-col w-full lg:w-1/2">
                     <ShippingAndPayment />
@@ -116,7 +115,7 @@ const Checkout = () => {
                                         </div>
                                         <br></br>
                                         <div className="text-lg">
-                                            ${(getPrice(item) * cart.filter((i) => i === item).length).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                                            {formatCurrency(toPennies(getPrice(item)) * cart.filter((i) => i === item).length)}
                                         </div>
                                     </section>
                                 </li>
@@ -124,7 +123,6 @@ const Checkout = () => {
                         ))}
                     </section>
                 </section>
-
 
                 <section className="w-full lg:w-1/2 mt-4 lg:mt-2 lg:mr-36">
                     <ItemsSummary />
@@ -136,6 +134,9 @@ const Checkout = () => {
         </div>
     )
 }
+
+
+
 
 
 export default Checkout;
