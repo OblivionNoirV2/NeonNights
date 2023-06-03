@@ -100,10 +100,9 @@ const Checkout = () => {
     const { cart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
     return (
-        <div className="mt-8 mx-8 lg:mx-0 ">
+        <div className="mt-24 mx-8 lg:mx-0  ">
             <main className="sm:w-full lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
-
                 <section className="flex flex-col w-full lg:w-1/2">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
@@ -137,8 +136,8 @@ const Checkout = () => {
                 </section>
             </main>
             {cart.length !== 0 &&
-                <section className="flex justify-center 
-                mt-4 mx-auto mb-12 text-4xl lg:text-5xl">
+                <section className="flex ml-4 lg:ml-[18rem] lg:justify-center 
+                mt-4 lg:mx-auto mb-12 text-4xl lg:text-5xl">
                     <ConfirmButton />
                 </section>
             }
