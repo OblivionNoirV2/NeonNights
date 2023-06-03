@@ -44,7 +44,7 @@ const ShippingAndPayment = () => {
 const ConfirmButton = () => {
     return (
         <button onClick={() => alert("Order confirmed!")}
-            className="checkout-btn rounded-lg text-white lg:mb-0  text-5xl
+            className="checkout-btn rounded-lg text-white lg:mb-0 
          px-4 py-4">
             Confirm Order
         </button>
@@ -137,7 +137,8 @@ const Checkout = () => {
                 </section>
             </main>
             {cart.length !== 0 &&
-                <section className="flex justify-center mt-4 mx-auto">
+                <section className="flex justify-center 
+                mt-4 mx-auto mb-12 text-4xl lg:text-5xl">
                     <ConfirmButton />
                 </section>
             }
