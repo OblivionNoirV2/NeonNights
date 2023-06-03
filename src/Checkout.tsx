@@ -4,9 +4,18 @@ import { SubTotalContext, CartContext } from "./Context";
 import { image_source_lookup, product_name_lookup, getPrice } from "./ProductInfo";
 
 
-//goes on the right
-export function formatCurrency(num: number) {
-    return "$" + num.toLocaleString('en-US', {
+
+function toPennies(amount: number) {
+    return Math.round(amount * 100);
+}
+
+//Convert pennies back to dollars for display
+function fromPennies(amount: number) {
+    return amount / 100;
+}
+//Display in correct currency format
+export function formatCurrency(amountInPennies: number) {
+    return "$" + fromPennies(amountInPennies).toLocaleString('en-US', {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
     }) + " ";
@@ -45,6 +54,12 @@ const ConfirmButton = () => {
 const ItemsSummary = () => {
     const { total } = useContext(SubTotalContext);
     const { cart } = useContext(CartContext);
+    const totalPennies = toPennies(total);
+    const shipping_pennies = toPennies(cart.length * 3);
+    const pre_tax_total = totalPennies + shipping_pennies;
+    const estimated_tax = Math.round(pre_tax_total * 0.07);
+    const orderTotal = pre_tax_total + estimated_tax;
+
     return (
         <section className="text-white ml-4">
             <h1 className="text-4xl">Order Summary</h1>
@@ -52,20 +67,20 @@ const ItemsSummary = () => {
             <section className="flex flex-col text-xl mb-4">
                 <ul>
                     <li className="my-6">
-                        Items ({cart.length}): {formatCurrency(total)}
+                        Items ({cart.length}): {formatCurrency(totalPennies)}
                     </li>
                     <li className="my-6">
-                        Shipping: {formatCurrency(cart.length * 3)}
+                        Shipping: {formatCurrency(shipping_pennies)}
                     </li>
                     <li className="my-6">
-                        Total before tax: {formatCurrency(total + cart.length * 3)}
+                        Total before tax: {formatCurrency(pre_tax_total)}
                     </li>
                     <li className="my-6">
-                        Estimated tax: {formatCurrency((total + cart.length * 3) * 0.07)}
+                        Estimated tax: {formatCurrency(estimated_tax)}
                     </li>
                     <hr className="w-4/5"></hr>
                     <li className="text-3xl">
-                        Order total: {formatCurrency((total + cart.length * 3) * 1.07)}
+                        Order total: {formatCurrency(orderTotal)}
                     </li>
                 </ul>
             </section>
@@ -80,20 +95,23 @@ const Checkout = () => {
         <div className="mt-8 mx-8 lg:mx-0 ">
             <main className="sm:w-full lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
+
+
                 <section className="flex flex-col w-full lg:w-1/2">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
-                    <section className="flex flex-col ">
+                    <section className="flex flex-col  ">
                         {unique_items.map((item, index) => (
                             <ol key={index}>
-                                <li className="flex flex-row ml-12">
+                                <li className="flex flex-col sm:flex-row ml-12 w-full items-center">
 
                                     <img src={image_source_lookup[item]}
-                                        className="w-full my-4 ml-4"
+                                        className=" my-4
+                         w-1/2  lg:w-1/4 h-auto mr-64 lg:mr-4"
                                         alt={product_name_lookup[item]}>
                                     </img>
-                                    <section className="flex-col ml-4 mt-8">
-                                        <div className="text-xl">
+                                    <section className="flex-col mt-4 sm:mt-0 w-full sm:w-2/3 lg:w-3/4">
+                                        <div className="text-md lg:text-xl">
                                             {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         </div>
                                         <br></br>
@@ -106,11 +124,13 @@ const Checkout = () => {
                         ))}
                     </section>
                 </section>
+
+
                 <section className="w-full lg:w-1/2 mt-4 lg:mt-2 lg:mr-36">
                     <ItemsSummary />
                 </section>
             </main>
-            <section className="flex justify-center mx-auto">
+            <section className="flex justify-center mx-auto mb-16">
                 <ConfirmButton />
             </section>
         </div>
