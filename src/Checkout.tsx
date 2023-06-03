@@ -97,11 +97,12 @@ const ItemsSummary = () => {
     );
 };
 //row with 2 cols
+//problem: text needs to wrap around on mobile
 const Checkout = () => {
     const { cart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
     return (
-        <div className="mt-24 mx-8 lg:mx-0 ">
+        <div className="mt-24 mx-8 lg:mx-0 mb-16 ">
             <main className="w-10/12 lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
 
