@@ -72,16 +72,21 @@ const ProductPage = () => {
                         <AddedMessage product={pi.product_name_lookup[product_data.name]} />
                     </div>
                     <button onClick={() => handleAddToCart(pi.product_name_lookup[product_data.name])}
-                        className='add-btn w-2/3 ml-4 lg:w-full lg:mx-auto mt-8 add-cart-btn mb-8 lg:mb-0'>Add to cart</button>
+                        className='add-btn w-2/3 ml-4 
+                        lg:w-full lg:mx-auto mt-8 
+                        add-cart-btn mb-8 lg:mb-4'>Add to cart</button>
                     {/*for the rocket launcher*/}
-                    {
-                        product_data.item_number === 9 &&
-                        <div className='text-xs flex justify-center lg:justify-end mt-80'>
-                            *probably illegal but we'll sell it to you anyway
-                        </div>
-                    }
+
                 </section>
+
             </section>
+            {
+                product_data.item_number === 9 &&
+                <div className='text-xs flex justify-center
+                 lg:justify-end mt-[32rem] mr-4 text-white'>
+                    *probably illegal but we'll sell it to you anyway
+                </div>
+            }
         </main>
 
     );

@@ -9,7 +9,6 @@ const CartElement = () => {
     const { cart, setCart } = useContext(CartContext);
     const { total, setTotal } = useContext(SubTotalContext);
     const unique_items = Array.from(new Set(cart));
-    //- button
     function handleRemoval(item: string) {
         let index = cart.indexOf(item);
         if (index !== -1) {
@@ -18,7 +17,6 @@ const CartElement = () => {
             setCart(new_cart);
         }
     }
-    //+ button
     function handleAddition(item: string) {
         setCart([...cart, item]);
     }
@@ -76,9 +74,7 @@ h-fit px-2 rounded-lg"
                                     </section>
                                 </li>
                             ))}
-
                         </ul>
-
                     }
                 </section>
                 {cart.length !== 0 &&
@@ -89,7 +85,6 @@ h-fit px-2 rounded-lg"
             </section>
             <hr></hr>
             {cart.length !== 0 &&
-                //this one gets a special animation
                 <Link to="/checkout">
                     <button
                         className="text-white flex justify-center mx-auto 
@@ -99,7 +94,7 @@ h-fit px-2 rounded-lg"
                 </Link>
             }
         </main>
-    )
-}
+    );
+};
 
 export default CartElement;
