@@ -44,8 +44,8 @@ const ShippingAndPayment = () => {
 const ConfirmButton = () => {
     return (
         <button onClick={() => alert("Order confirmed!")}
-            className="checkout-btn rounded-lg text-white  text-5xl
-        mt-4 px-4 py-4 ">
+            className="checkout-btn rounded-lg text-white lg:mb-0  text-5xl
+         px-4 py-4">
             Confirm Order
         </button>
     )
@@ -62,31 +62,39 @@ const ItemsSummary = () => {
 
     return (
         <section className="text-white ml-4">
-            <h1 className="text-4xl">Order Summary</h1>
-            <hr></hr>
-            <section className="flex flex-col text-xl mb-4">
-                <ul>
-                    <li className="my-6">
-                        Items ({cart.length}): {formatCurrency(total_pennies)}
-                    </li>
-                    <li className="my-6">
-                        Shipping: {formatCurrency(shipping_pennies)}
-                    </li>
-                    <li className="my-6">
-                        Total before tax: {formatCurrency(pre_tax_total)}
-                    </li>
-                    <li className="my-6">
-                        Estimated tax: {formatCurrency(estimated_tax)}
-                    </li>
-                    <hr className="w-4/5"></hr>
-                    <li className="text-3xl">
-                        Order total: {formatCurrency(order_total)}
-                    </li>
-                </ul>
-            </section>
+            {cart.length !== 0 ?
+                <>
+                    <h1 className="text-4xl">Order Summary</h1>
+                    <hr></hr>
+                    <section className="flex flex-col text-xl mb-4">
+                        <ul>
+                            <li className="my-6">
+                                Items ({cart.length}): {formatCurrency(total_pennies)}
+                            </li>
+                            <li className="my-6">
+                                Shipping: {formatCurrency(shipping_pennies)}
+                            </li>
+                            <li className="my-6">
+                                Total before tax: {formatCurrency(pre_tax_total)}
+                            </li>
+                            <li className="my-6">
+                                Estimated tax: {formatCurrency(estimated_tax)}
+                            </li>
+                            <hr className="w-4/5"></hr>
+                            <li className="text-3xl">
+                                Order total: {formatCurrency(order_total)}
+                            </li>
+                        </ul>
+                    </section>
+                </>
+                :
+                <section>
+                    <h1 className="text-3xl lg:text-4xl mb-8 lg:mb-0">Your cart is empty</h1>
+                </section>
+            }
         </section>
-    )
-}
+    );
+};
 //row with 2 cols
 const Checkout = () => {
     const { cart } = useContext(CartContext);
@@ -128,9 +136,12 @@ const Checkout = () => {
                     <ItemsSummary />
                 </section>
             </main>
-            <section className="flex justify-center mx-auto mb-16">
-                <ConfirmButton />
-            </section>
+            {cart.length !== 0 &&
+                <section className="flex justify-center mt-4 mx-auto">
+                    <ConfirmButton />
+                </section>
+            }
+
         </div>
     )
 }
