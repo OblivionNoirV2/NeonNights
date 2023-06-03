@@ -55,10 +55,10 @@ const ItemsSummary = () => {
     const { total } = useContext(SubTotalContext);
     const { cart } = useContext(CartContext);
     const totalPennies = toPennies(total);
-    const shippingPennies = toPennies(cart.length * 3);
-    const preTaxTotal = totalPennies + shippingPennies;
-    const estimatedTax = Math.round(preTaxTotal * 0.07);
-    const orderTotal = preTaxTotal + estimatedTax;
+    const shipping_pennies = toPennies(cart.length * 3);
+    const pre_tax_total = totalPennies + shipping_pennies;
+    const estimated_tax = Math.round(pre_tax_total * 0.07);
+    const orderTotal = pre_tax_total + estimated_tax;
 
     return (
         <section className="text-white ml-4">
@@ -70,13 +70,13 @@ const ItemsSummary = () => {
                         Items ({cart.length}): {formatCurrency(totalPennies)}
                     </li>
                     <li className="my-6">
-                        Shipping: {formatCurrency(shippingPennies)}
+                        Shipping: {formatCurrency(shipping_pennies)}
                     </li>
                     <li className="my-6">
-                        Total before tax: {formatCurrency(preTaxTotal)}
+                        Total before tax: {formatCurrency(pre_tax_total)}
                     </li>
                     <li className="my-6">
-                        Estimated tax: {formatCurrency(estimatedTax)}
+                        Estimated tax: {formatCurrency(estimated_tax)}
                     </li>
                     <hr className="w-4/5"></hr>
                     <li className="text-3xl">

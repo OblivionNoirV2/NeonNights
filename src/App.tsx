@@ -180,7 +180,8 @@ const VolButton: React.FC = () => {
   }
 
   return (
-    <div className='sticky top-[9rem] text-xs ml-4 lg:text-lg w-full flex justify-end'>
+    <div className='sticky top-[9rem] text-xs lg:text-lg 
+    flex justify-end ml-auto w-1/12'>
       <button onClick={toggleThemeSong}
         className='text-white mr-8  w-24 
         lg:w-56 py-1 px-0.5 lg:py-1 rounded-bl-lg rounded-tl-lg lg:rounded-lg '>

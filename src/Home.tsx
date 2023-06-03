@@ -22,7 +22,6 @@ const SortSelection: React.FC<SortSelectionProps> = ({ setSortType }) => {
             <option value="popularity">Popularity</option>
             <option value="default">Default</option>
         </select>
-
     );
 };
 
