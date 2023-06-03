@@ -22,7 +22,7 @@ export function formatCurrency(amountInPennies: number) {
 }
 const ShippingAndPayment = () => {
     return (
-        <section className="flex flex-col text-white ml-16 mt-4 mr-4">
+        <section className="flex flex-col text-white ml-4 mt-4 mr-4">
             <div className="flex flex-row">
                 <h1>Shipping Address</h1>
                 <ul className="ml-8">
@@ -103,7 +103,7 @@ const Checkout = () => {
     const unique_items = Array.from(new Set(cart));
     return (
         <div className="mt-24 mx-8 lg:mx-0 mb-16 ">
-            <main className="w-10/12 lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
+            <main className="w-11/12 lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
 
                 <section className="flex flex-col w-full lg:w-1/2">
@@ -120,7 +120,7 @@ const Checkout = () => {
                                         alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col mt-4 sm:mt-0 w-full sm:w-2/3 lg:w-3/4">
-                                        <div className="text-md lg:text-xl">
+                                        <div className="text-md lg:text-xl w-1/2 mr-4">
                                             {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         </div>
                                         <br></br>
