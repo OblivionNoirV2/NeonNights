@@ -64,7 +64,7 @@ const ItemsSummary = () => {
         <section className="text-white ml-4">
             {cart.length !== 0 ?
                 <>
-                    <h1 className="text-2xl lg:text-4xl">Order Summary</h1>
+                    <h1 className="text-xl sm:text-3xl">Order Summary</h1>
                     <hr></hr>
                     <section className="flex flex-col text-md lg:text-xl
                      mb-4">
@@ -103,8 +103,8 @@ const Checkout = () => {
     const unique_items = Array.from(new Set(cart));
     return (
         <div className="mt-24 mx-8 lg:mx-0 mb-16 ">
-            <main className="w-11/12 lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
-        flex flex-col sm:flex-row mx-auto text-white rounded-lg">
+            <main className="w-11/12 md:w-2/5 checkout-page justify-start sm:justify-center 
+        flex flex-col [4 mx-auto text-white rounded-lg">
 
                 <section className="flex flex-col w-full lg:w-1/2 ">
                     <ShippingAndPayment />
@@ -112,7 +112,7 @@ const Checkout = () => {
                     <section className="flex flex-col  ">
                         {unique_items.map((item, index) => (
                             <ol key={index}>
-                                <li className="flex flex-col sm:flex-row ml-12 w-full items-center">
+                                <li className="flex  flex-col sm:flex-row ml-4 w-full items-center">
 
                                     <img src={image_source_lookup[item]}
                                         className="my-4
