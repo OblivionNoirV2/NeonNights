@@ -192,6 +192,11 @@ const VolButton: React.FC = () => {
   )
 }
 
+function AutoCopyright() {
+  const year = new Date().getFullYear();
+  return year;
+}
+
 function App() {
 
   return (
@@ -208,6 +213,11 @@ function App() {
         <Route path='/Product/:itemnumber' element={<ProductPage />} />
         <Route path='/' element={<Home />} />
       </Routes>
+
+      <div className='text-white flex justify-center text-xs'>
+        Copyright Benjamin Donahue 2023{AutoCopyright() !== 2023 ? - AutoCopyright() : null}
+      </div>
+
     </>
   );
 }

@@ -28,7 +28,8 @@ const CartElement = () => {
     }, [cart])
 
     return (
-        <main className=" w-3/5 ml-4 justify-start mr-auto lg:justify-center  lg:ml-auto">
+        <main className=" w-3/5 ml-4 justify-start mr-auto 
+        lg:justify-center  lg:ml-auto">
             <h1 className="text-6xl checkout">Cart</h1>
             <hr></hr>
             <section className="flex flex-col">

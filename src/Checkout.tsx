@@ -22,7 +22,7 @@ export function formatCurrency(amountInPennies: number) {
 }
 const ShippingAndPayment = () => {
     return (
-        <section className="flex flex-col text-white ml-16 mt-4">
+        <section className="flex flex-col text-white ml-4 mt-4 mr-4">
             <div className="flex flex-row">
                 <h1>Shipping Address</h1>
                 <ul className="ml-8">
@@ -44,8 +44,8 @@ const ShippingAndPayment = () => {
 const ConfirmButton = () => {
     return (
         <button onClick={() => alert("Order confirmed!")}
-            className="checkout-btn rounded-lg text-white  text-5xl
-        mt-4 px-4 py-4 ">
+            className="checkout-btn rounded-lg text-white lg:mb-0 
+         px-4 py-4">
             Confirm Order
         </button>
     )
@@ -62,41 +62,51 @@ const ItemsSummary = () => {
 
     return (
         <section className="text-white ml-4">
-            <h1 className="text-4xl">Order Summary</h1>
-            <hr></hr>
-            <section className="flex flex-col text-xl mb-4">
-                <ul>
-                    <li className="my-6">
-                        Items ({cart.length}): {formatCurrency(total_pennies)}
-                    </li>
-                    <li className="my-6">
-                        Shipping: {formatCurrency(shipping_pennies)}
-                    </li>
-                    <li className="my-6">
-                        Total before tax: {formatCurrency(pre_tax_total)}
-                    </li>
-                    <li className="my-6">
-                        Estimated tax: {formatCurrency(estimated_tax)}
-                    </li>
-                    <hr className="w-4/5"></hr>
-                    <li className="text-3xl">
-                        Order total: {formatCurrency(order_total)}
-                    </li>
-                </ul>
-            </section>
+            {cart.length !== 0 ?
+                <>
+                    <h1 className="text-2xl lg:text-4xl">Order Summary</h1>
+                    <hr></hr>
+                    <section className="flex flex-col text-md lg:text-xl
+                     mb-4">
+                        <ul>
+                            <li className="my-6">
+                                Items ({cart.length}): {formatCurrency(total_pennies)}
+                            </li>
+                            <li className="my-6">
+                                Shipping: {formatCurrency(shipping_pennies)}
+                            </li>
+                            <li className="my-6">
+                                Total before tax: {formatCurrency(pre_tax_total)}
+                            </li>
+                            <li className="my-6">
+                                Estimated tax: {formatCurrency(estimated_tax)}
+                            </li>
+                            <hr className="w-4/5"></hr>
+                            <li className="text-2xl lg:text-4xl">
+                                Order total: {formatCurrency(order_total)}
+                            </li>
+                        </ul>
+                    </section>
+                </>
+                :
+                <section>
+                    <h1 className="text-3xl lg:text-4xl mb-8 lg:mb-0">Your cart is empty</h1>
+                </section>
+            }
         </section>
-    )
-}
+    );
+};
 //row with 2 cols
+//problem: text needs to wrap around on mobile
 const Checkout = () => {
     const { cart } = useContext(CartContext);
     const unique_items = Array.from(new Set(cart));
     return (
-        <div className="mt-8 mx-8 lg:mx-0 ">
-            <main className="sm:w-full lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
+        <div className="mt-24 mx-8 lg:mx-0 mb-16 ">
+            <main className="w-11/12 lg:w-3/5 checkout-page sm:justify-start lg:justify-center 
         flex flex-col sm:flex-row mx-auto text-white rounded-lg">
 
-                <section className="flex flex-col w-full lg:w-1/2">
+                <section className="flex flex-col w-full lg:w-1/2 ">
                     <ShippingAndPayment />
                     <hr className="mt-4 w-2/3"></hr>
                     <section className="flex flex-col  ">
@@ -105,16 +115,17 @@ const Checkout = () => {
                                 <li className="flex flex-col sm:flex-row ml-12 w-full items-center">
 
                                     <img src={image_source_lookup[item]}
-                                        className=" my-4
-                         w-1/2  lg:w-1/4 h-auto mr-64 lg:mr-4"
+                                        className="my-4
+                         w-1/4 sm:w-full h-auto mr-64  lg:mr-4"
                                         alt={product_name_lookup[item]}>
                                     </img>
                                     <section className="flex-col mt-4 sm:mt-0 w-full sm:w-2/3 lg:w-3/4">
-                                        <div className="text-md lg:text-xl">
+                                        <div className="text-md 
+                                        lg:text-xl w-1/2 sm:-ml-56 lg:-ml-0 mr-4">
                                             {product_name_lookup[item]} x{cart.filter((i) => i === item).length}
                                         </div>
                                         <br></br>
-                                        <div className="text-lg">
+                                        <div className="text-lg sm:-ml-56 lg:-ml-0">
                                             {formatCurrency(toPennies(getPrice(item)) * cart.filter((i) => i === item).length)}
                                         </div>
                                     </section>
@@ -124,13 +135,18 @@ const Checkout = () => {
                     </section>
                 </section>
 
-                <section className="w-full lg:w-1/2 mt-4 lg:mt-2 lg:mr-36">
+                <section className="w-full md:w-1/3 
+                lg:w-1/2 mt-4 lg:mt-2 lg:mr-36">
                     <ItemsSummary />
                 </section>
             </main>
-            <section className="flex justify-center mx-auto mb-16">
-                <ConfirmButton />
-            </section>
+            {cart.length !== 0 &&
+                <section className="flex justify-center 
+                mt-4 mx-auto mb-12  text-3xl lg:text-5xl">
+                    <ConfirmButton />
+                </section>
+            }
+
         </div>
     )
 }
