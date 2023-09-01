@@ -180,7 +180,7 @@ const VolButton: React.FC = () => {
   }
 
   return (
-    <div className='sticky top-[9rem] text-xs lg:text-lg 
+    <div className='sticky top-[9rem] text-xs sm:text-lg 
     flex justify-end ml-auto w-1/12'>
       <button onClick={toggleThemeSong}
         className='text-white mr-8  w-24 
@@ -214,9 +214,7 @@ function App() {
         <Route path='/' element={<Home />} />
       </Routes>
 
-      <div className='text-white flex justify-center text-xs'>
-        Copyright Benjamin Donahue 2023{AutoCopyright() !== 2023 ? - AutoCopyright() : null}
-      </div>
+
 
     </>
   );

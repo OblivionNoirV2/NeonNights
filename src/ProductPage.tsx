@@ -54,8 +54,8 @@ const ProductPage = () => {
             <section className='mt-8 flex flex-col lg:flex-row 
   m-auto lg:w-2/3 product-page
   rounded-2xl mb-4'>
-                <section className='flex flex-col w-full lg:w-1/2 sm:mx-16 '>
-                    <h1 className='text-5xl lg:text-7xl ml-4 lg:ml-[2rem]'>{
+                <section className='flex flex-col w-full sm:w-1/2 sm:mx-16 '>
+                    <h1 className='text-4xl sm:text-7xl ml-4 lg:ml-[2rem]'>{
                         pi.product_name_lookup[product_data.name]
                     }</h1>
                     {
@@ -66,7 +66,7 @@ const ProductPage = () => {
                     }
                 </section>
                 <section className='flex flex-col w-full lg:w-2/3 mx-4 lg:mx-8 mt-8 lg:mt-48'>
-                    <p className='text-md mx-4 lg:mx-0 lg:text-3xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
+                    <p className='text-md mx-4 lg:mx-0 sm:text-2xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
                     <div className='flex'>
                         <h2 className='text-xl lg:text-3xl mt-8 ml-4 lg:ml-0'>${product_data.price}</h2>
                         <AddedMessage product={pi.product_name_lookup[product_data.name]} />
