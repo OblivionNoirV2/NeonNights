@@ -54,19 +54,21 @@ const ProductPage = () => {
             <section className='mt-8 flex flex-col lg:flex-row 
   m-auto lg:w-2/3 product-page
   rounded-2xl mb-4'>
-                <section className='flex flex-col w-full lg:w-1/2 sm:mx-16 '>
-                    <h1 className='text-5xl lg:text-7xl ml-4 lg:ml-[2rem]'>{
+                <section className='flex flex-col w-full sm:w-1/2 sm:mx-16 '>
+                    <h1 className='text-3xl sm:text-6xl ml-4 lg:ml-[2rem]'>{
                         pi.product_name_lookup[product_data.name]
                     }</h1>
                     {
                         product_image &&
                         <img src={product_image}
-                            className='rounded-2xl prod-image w-1/2'
+                            className='rounded-2xl prod-image w-1/2 sm:w-2/3'
                             alt={pi.product_name_lookup[product_data.name]} />
                     }
                 </section>
-                <section className='flex flex-col w-full lg:w-2/3 mx-4 lg:mx-8 mt-8 lg:mt-48'>
-                    <p className='text-md mx-4 lg:mx-0 lg:text-3xl leading-tight lg:leading-normal'>{pi.getImageCaption(product_data.name, "long")}</p>
+                <section className='flex flex-col w-full lg:w-2/3 mr-24 mt-8 lg:mt-48'>
+                    <p className='text-sm mx-4 lg:mx-0 sm:text-xl leading-tight sm:leading-normal mr-16'>
+                        {pi.getImageCaption(product_data.name, "long")}
+                    </p>
                     <div className='flex'>
                         <h2 className='text-xl lg:text-3xl mt-8 ml-4 lg:ml-0'>${product_data.price}</h2>
                         <AddedMessage product={pi.product_name_lookup[product_data.name]} />
@@ -74,12 +76,14 @@ const ProductPage = () => {
                     <button onClick={() => handleAddToCart(pi.product_name_lookup[product_data.name])}
                         className='add-btn w-2/3 ml-4 
                         lg:w-full lg:mx-auto mt-8 
-                        add-cart-btn mb-8 lg:mb-4'>Add to cart</button>
-                    {/*for the rocket launcher*/}
+                        add-cart-btn mb-8 lg:mb-4'>
+                        Add to cart
+                    </button>
 
                 </section>
 
             </section>
+            {/*for the rocket launcher*/}
             {
                 product_data.item_number === 9 &&
                 <div className='text-xs flex justify-center
